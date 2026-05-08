@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact — Olbiatech</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: { colors: { "secondary-container": "#0565fe" } } }
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+  .font-manrope { font-family: 'Manrope', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+  /* Shared nav styles */
+  .dd-item { display:block;padding:7px 10px;border-radius:8px;font-size:14px;font-weight:500;color:#334155;font-family:Manrope,sans-serif;text-decoration:none;transition:color 0.15s,background-color 0.15s; }
+  .dd-item:hover { color:#0565fe;background-color:#eff6ff; }
+  .mob-dd-item { display:block;padding:8px 12px;border-radius:8px;font-size:15px;font-weight:500;color:#334155;font-family:Manrope,sans-serif;text-decoration:none;transition:color 0.15s,background-color 0.15s; }
+  .mob-dd-item:hover { color:#0565fe;background-color:#eff6ff; }
+  #solutions-btn:hover, #solutions-btn:focus { color:#0565fe;outline:none; }
+
+  .btn-gradient { background:linear-gradient(120deg,#0044d4 0%,#2d8bff 48%,#0044d4 100%);background-size:220% auto;transition:background-position 0.55s ease,box-shadow 0.3s ease,transform 0.2s ease; }
+  .btn-gradient:hover { background-position:right center;box-shadow:0 10px 32px rgba(5,101,254,0.42);transform:translateY(-2px); }
+
+  /* Reveal animation */
+  .reveal { opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.visible { opacity:1;transform:translateY(0); }
+
+  /* Form fields */
+  .form-label {
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    color:#374151;
+    margin-bottom:6px;
+    font-family:Manrope,sans-serif;
+    letter-spacing:0.01em;
+  }
+  .form-input {
+    width:100%;
+    padding:12px 16px;
+    border:1.5px solid #e2e8f0;
+    border-radius:10px;
+    font-size:15px;
+    font-family:Inter,sans-serif;
+    color:#0f172a;
+    background:#ffffff;
+    transition:border-color 0.2s ease,box-shadow 0.2s ease;
+    outline:none;
+    box-sizing:border-box;
+  }
+  .form-input:focus {
+    border-color:#0565fe;
+    box-shadow:0 0 0 3px rgba(5,101,254,0.1);
+  }
+  .form-input::placeholder { color:#94a3b8; }
+
+  /* Contact layout */
+  .contact-grid {
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:64px;
+    align-items:start;
+  }
+  @media (max-width:900px) {
+    .contact-grid { grid-template-columns:1fr;gap:40px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-[0px_4px_20px_rgba(10,25,47,0.05)]">
+<div class="flex justify-between items-center max-w-[1200px] mx-auto px-8 h-[180px]">
+
+  <!-- Logo -->
+  <div class="text-2xl font-bold tracking-tight text-slate-900 font-manrope">
+    <a href="index.html"><img alt="Olbiatech Logo" class="w-auto h-[180px]" src="lunadesk-logo.png"/></a>
+  </div>
+
+  <!-- Desktop Nav -->
+  <div class="hidden md:flex items-center space-x-16">
+
+    <!-- Solutions Dropdown -->
+    <div class="relative" id="solutions-dd">
+      <button id="solutions-btn" aria-haspopup="true" aria-expanded="false"
+        style="display:inline-flex;align-items:center;gap:6px;font-size:18px;font-weight:700;color:#0f172a;font-family:Manrope,sans-serif;background:none;border:none;cursor:pointer;padding:0;transition:color 0.25s ease;">
+        Solutions
+        <svg id="solutions-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;transition:transform 0.25s ease;">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Mega-menu panel -->
+      <div id="solutions-panel"
+        style="position:absolute;top:calc(100% + 18px);left:0;min-width:580px;background:#ffffff;border:1px solid rgba(15,23,42,0.09);border-radius:18px;box-shadow:0 16px 56px rgba(15,23,42,0.13),0 2px 8px rgba(15,23,42,0.06);padding:28px 32px;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity 0.22s ease,transform 0.22s ease,visibility 0.22s;z-index:200;">
+        <!-- Arrow tip -->
+        <div style="position:absolute;top:-7px;left:28px;width:14px;height:14px;background:#fff;border-left:1px solid rgba(15,23,42,0.09);border-top:1px solid rgba(15,23,42,0.09);border-radius:3px 0 0 0;transform:rotate(45deg);"></div>
+        <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:32px;">
+          <!-- Col 1 -->
+          <div>
+            <p style="font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#0565fe;margin:0 0 12px;font-family:Manrope,sans-serif;">By Industry</p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1px;">
+              <li><a href="#" class="dd-item">Health &amp; Aesthetic Clinics</a></li>
+              <li><a href="#" class="dd-item">Dental Practices</a></li>
+              <li><a href="#" class="dd-item">Real Estate Agencies</a></li>
+              <li><a href="#" class="dd-item">Restaurants</a></li>
+            </ul>
+          </div>
+          <!-- Col 2 -->
+          <div>
+            <p style="font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#0565fe;margin:0 0 12px;font-family:Manrope,sans-serif;">By Use Case</p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1px;">
+              <li><a href="#" class="dd-item">AI Receptionist</a></li>
+              <li><a href="#" class="dd-item">Appointment Booking</a></li>
+              <li><a href="#" class="dd-item">Missed Call Recovery</a></li>
+              <li><a href="#" class="dd-item">Lead Follow-Up</a></li>
+              <li><a href="#" class="dd-item">Lead Reactivation</a></li>
+              <li><a href="#" class="dd-item">Lead Generation</a></li>
+              <li><a href="#" class="dd-item">Social Media Autopilot</a></li>
+              <li><a href="#" class="dd-item">Chatbot</a></li>
+              <li><a href="#" class="dd-item">Voicebot</a></li>
+              <li><a href="#" class="dd-item">WhatsApp &amp; SMS Automation</a></li>
+              <li><a href="#" class="dd-item">Customer Support Automation</a></li>
+              <li><a href="#" class="dd-item">Internal Reporting / Status Notification</a></li>
+              <li><a href="#" class="dd-item">Document Processing</a></li>
+              <li><a href="#" class="dd-item">Custom Automations</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a class="text-[#0f172a] font-bold text-[18px] hover:text-[#0565fe] transition-all duration-300 font-body-md" href="#">How It Works</a>
+    <a class="text-[#0f172a] font-bold text-[18px] hover:text-[#0565fe] transition-all duration-300 font-body-md" href="about.html">About Us</a>
+    <a class="text-[#0f172a] font-bold text-[18px] hover:text-[#0565fe] transition-all duration-300 font-body-md" href="contact.html">Contact</a>
+  </div>
+
+  <!-- Right: CTA + Mobile burger -->
+  <div class="flex items-center space-x-4">
+    <button id="burger-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px]" aria-label="Open menu">
+      <span class="block w-6 h-[2px] bg-[#0f172a] rounded transition-all duration-300" id="b1"></span>
+      <span class="block w-6 h-[2px] bg-[#0f172a] rounded transition-all duration-300" id="b2"></span>
+      <span class="block w-6 h-[2px] bg-[#0f172a] rounded transition-all duration-300" id="b3"></span>
+    </button>
+    <button class="btn-gradient text-white px-6 py-3 rounded-lg font-bold shadow-sm font-body-md">Get Started</button>
+  </div>
+</div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" style="display:none;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-top:1px solid rgba(15,23,42,0.07);padding:8px 24px 24px;">
+
+  <!-- Solutions accordion -->
+  <div style="border-bottom:1px solid #f1f5f9;">
+    <button id="mob-solutions-btn" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-size:17px;font-weight:700;color:#0f172a;font-family:Manrope,sans-serif;background:none;border:none;cursor:pointer;">
+      Solutions
+      <svg id="mob-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" style="transition:transform 0.25s ease;flex-shrink:0;">
+        <path d="M5 7L9 11L13 7" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div id="mob-solutions-panel" style="max-height:0;overflow:hidden;transition:max-height 0.38s cubic-bezier(0.22,1,0.36,1);">
+      <div style="padding:4px 0 20px;">
+        <p style="font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#0565fe;margin:0 0 8px;font-family:Manrope,sans-serif;">By Industry</p>
+        <ul style="list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:1px;">
+          <li><a href="#" class="mob-dd-item">Health &amp; Aesthetic Clinics</a></li>
+          <li><a href="#" class="mob-dd-item">Dental Practices</a></li>
+          <li><a href="#" class="mob-dd-item">Real Estate Agencies</a></li>
+          <li><a href="#" class="mob-dd-item">Restaurants</a></li>
+        </ul>
+        <p style="font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#0565fe;margin:0 0 8px;font-family:Manrope,sans-serif;">By Use Case</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1px;">
+          <li><a href="#" class="mob-dd-item">AI Receptionist</a></li>
+          <li><a href="#" class="mob-dd-item">Appointment Booking</a></li>
+          <li><a href="#" class="mob-dd-item">Missed Call Recovery</a></li>
+          <li><a href="#" class="mob-dd-item">Lead Follow-Up</a></li>
+          <li><a href="#" class="mob-dd-item">Lead Reactivation</a></li>
+          <li><a href="#" class="mob-dd-item">Lead Generation</a></li>
+          <li><a href="#" class="mob-dd-item">Social Media Autopilot</a></li>
+          <li><a href="#" class="mob-dd-item">Chatbot</a></li>
+          <li><a href="#" class="mob-dd-item">Voicebot</a></li>
+          <li><a href="#" class="mob-dd-item">WhatsApp &amp; SMS Automation</a></li>
+          <li><a href="#" class="mob-dd-item">Customer Support Automation</a></li>
+          <li><a href="#" class="mob-dd-item">Internal Reporting / Status Notification</a></li>
+          <li><a href="#" class="mob-dd-item">Document Processing</a></li>
+          <li><a href="#" class="mob-dd-item">Custom Automations</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <a style="display:block;padding:14px 0;font-size:17px;font-weight:700;color:#0f172a;font-family:Manrope,sans-serif;text-decoration:none;border-bottom:1px solid #f1f5f9;" href="#">How It Works</a>
+  <a style="display:block;padding:14px 0;font-size:17px;font-weight:700;color:#0f172a;font-family:Manrope,sans-serif;text-decoration:none;border-bottom:1px solid #f1f5f9;" href="about.html">About Us</a>
+  <a style="display:block;padding:14px 0;font-size:17px;font-weight:700;color:#0f172a;font-family:Manrope,sans-serif;text-decoration:none;" href="contact.html">Contact</a>
+</div>
+</nav>
+
+<main style="padding-top:180px;">
+
+  <!-- Page Header -->
+  <section style="background:#f8fafc;padding:64px 0 80px;">
+    <div style="max-width:1100px;margin:0 auto;padding:0 32px;">
+      <p class="reveal" style="font-size:11px;font-weight:700;letter-spacing:0.14em;color:#0565fe;text-transform:uppercase;margin-bottom:16px;font-family:Manrope,sans-serif;">GET IN TOUCH</p>
+      <h1 class="reveal font-manrope" style="font-size:52px;font-weight:800;letter-spacing:-0.03em;line-height:1.1;color:#0f172a;margin-bottom:20px;">Contact Olbiatech</h1>
+      <p class="reveal" style="font-size:18px;line-height:1.75;color:#475569;max-width:580px;">
+        Have a question, want to discuss an automation idea, or would like to book a call? Send us a message and we'll get back to you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <section style="background:#ffffff;padding:0 0 100px;">
+    <div style="line-height:0;overflow:hidden;background:#f8fafc;">
+      <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;height:48px;">
+        <path d="M0,24 C480,48 960,0 1440,24 L1440,48 L0,48 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+    <div style="max-width:1100px;margin:0 auto;padding:60px 32px 0;">
+      <div class="contact-grid">
+
+        <!-- ── LEFT: Contact Form ── -->
+        <div class="reveal">
+          <div style="background:#ffffff;border:1px solid #e8edf5;border-radius:20px;padding:40px;box-shadow:0 4px 28px rgba(15,23,42,0.06);">
+            <h2 class="font-manrope" style="font-size:22px;font-weight:700;color:#0f172a;margin-bottom:28px;letter-spacing:-0.01em;">Send us a message</h2>
+
+            <!-- TODO: Connect form action to your backend or form service (e.g. Formspree, Netlify Forms, Make.com) -->
+            <form id="contact-form" onsubmit="handleSubmit(event)" novalidate>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+                <div>
+                  <label class="form-label" for="full-name">Full Name <span style="color:#ef4444;">*</span></label>
+                  <input class="form-input" id="full-name" name="full_name" type="text" placeholder="Jane Smith" required/>
+                </div>
+                <div>
+                  <label class="form-label" for="company">Company Name</label>
+                  <input class="form-input" id="company" name="company" type="text" placeholder="Acme Ltd"/>
+                </div>
+              </div>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+                <div>
+                  <label class="form-label" for="email">Email Address <span style="color:#ef4444;">*</span></label>
+                  <input class="form-input" id="email" name="email" type="email" placeholder="jane@company.com" required/>
+                </div>
+                <div>
+                  <label class="form-label" for="phone">Phone Number</label>
+                  <input class="form-input" id="phone" name="phone" type="tel" placeholder="+44 7700 000000"/>
+                </div>
+              </div>
+
+              <div style="margin-bottom:16px;">
+                <label class="form-label" for="service">Service Interested In</label>
+                <select class="form-input" id="service" name="service" style="cursor:pointer;appearance:auto;">
+                  <option value="" disabled selected>Select a service...</option>
+                  <option>AI Receptionist</option>
+                  <option>Appointment Booking</option>
+                  <option>Chatbot</option>
+                  <option>Voicebot</option>
+                  <option>Lead Generation</option>
+                  <option>Lead Reactivation</option>
+                  <option>Social Media Autopilot</option>
+                  <option>WhatsApp &amp; SMS Automation</option>
+                  <option>Customer Support Automation</option>
+                  <option>Document Processing</option>
+                  <option>Internal Reporting / Status Notification</option>
+                  <option>Custom Automations</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+
+              <div style="margin-bottom:24px;">
+                <label class="form-label" for="message">Message <span style="color:#ef4444;">*</span></label>
+                <textarea class="form-input" id="message" name="message" rows="5" placeholder="Tell us a bit about your business and what you're looking to automate..." required style="resize:vertical;min-height:130px;"></textarea>
+              </div>
+
+              <!-- Error / success states -->
+              <div id="form-error" style="display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;margin-bottom:16px;color:#991b1b;font-size:14px;">
+                Please fill in all required fields.
+              </div>
+              <div id="form-success" style="display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:16px;margin-bottom:16px;color:#166534;font-size:14px;font-weight:500;text-align:center;">
+                ✓ Message sent! We'll be in touch soon.
+              </div>
+
+              <button type="submit" id="submit-btn" class="btn-gradient" style="width:100%;padding:14px 24px;border:none;border-radius:12px;font-size:16px;font-weight:700;color:#ffffff;font-family:Manrope,sans-serif;cursor:pointer;">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- ── RIGHT: Contact Details ── -->
+        <div class="reveal" style="display:flex;flex-direction:column;gap:24px;">
+
+          <!-- Contact info card -->
+          <div style="background:#ffffff;border:1px solid #e8edf5;border-radius:20px;padding:36px;box-shadow:0 4px 28px rgba(15,23,42,0.06);">
+            <h2 class="font-manrope" style="font-size:20px;font-weight:700;color:#0f172a;margin-bottom:24px;letter-spacing:-0.01em;">Contact details</h2>
+            <div style="display:flex;flex-direction:column;gap:20px;">
+
+              <!-- Email -->
+              <div style="display:flex;align-items:flex-start;gap:16px;">
+                <div style="width:44px;height:44px;border-radius:12px;background:#eff6ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <span class="material-symbols-outlined" style="font-size:20px;color:#0565fe;">mail</span>
+                </div>
+                <div>
+                  <p style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:4px;font-family:Manrope,sans-serif;">Email</p>
+                  <a href="mailto:contact@olbiatech.com" style="font-size:15px;font-weight:600;color:#0f172a;text-decoration:none;font-family:Manrope,sans-serif;transition:color 0.2s;" onmouseover="this.style.color='#0565fe'" onmouseout="this.style.color='#0f172a'">contact@olbiatech.com</a>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div style="display:flex;align-items:flex-start;gap:16px;">
+                <div style="width:44px;height:44px;border-radius:12px;background:#eff6ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <span class="material-symbols-outlined" style="font-size:20px;color:#0565fe;">call</span>
+                </div>
+                <div>
+                  <p style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:4px;font-family:Manrope,sans-serif;">Phone</p>
+                  <!-- TODO: Replace phone number below -->
+                  <a href="tel:+447379974484" style="font-size:15px;font-weight:600;color:#0f172a;text-decoration:none;font-family:Manrope,sans-serif;transition:color 0.2s;" onmouseover="this.style.color='#0565fe'" onmouseout="this.style.color='#0f172a'">+44 (0) 7379 974 484</a>
+                </div>
+              </div>
+
+              <!-- Location -->
+              <div style="display:flex;align-items:flex-start;gap:16px;">
+                <div style="width:44px;height:44px;border-radius:12px;background:#eff6ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <span class="material-symbols-outlined" style="font-size:20px;color:#0565fe;">location_on</span>
+                </div>
+                <div>
+                  <p style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:4px;font-family:Manrope,sans-serif;">Based in</p>
+                  <p style="font-size:15px;font-weight:600;color:#0f172a;font-family:Manrope,sans-serif;">London, UK</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chat widget note -->
+          <div style="background:linear-gradient(135deg,#0f172a 0%,#1a2744 100%);border-radius:20px;padding:28px 32px;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(5,101,254,0.15);"></div>
+            <div style="position:absolute;bottom:-20px;left:-20px;width:80px;height:80px;border-radius:50%;background:rgba(5,101,254,0.1);"></div>
+            <div style="position:relative;">
+              <div style="width:40px;height:40px;border-radius:12px;background:rgba(5,101,254,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+                <span class="material-symbols-outlined" style="font-size:20px;color:#60a5fa;">chat_bubble</span>
+              </div>
+              <p style="font-size:15px;font-weight:700;color:#ffffff;margin-bottom:8px;font-family:Manrope,sans-serif;">Need a faster response?</p>
+              <p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,0.7);font-family:Inter,sans-serif;">Start a chat using the button in the bottom-right corner and request a call directly.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer style="background:linear-gradient(160deg,#111827 0%,#1a2744 50%,#0f172a 100%);border-top:1px solid rgba(255,255,255,0.08);padding:60px 0 0;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 32px 60px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:32px;">
+    <!-- Left: Logo -->
+    <div>
+      <img src="logo-footer.png" alt="Olbiatech" style="height:144px;width:auto;display:block;">
+    </div>
+    <!-- Right: Contact info -->
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <a href="mailto:contact@olbiatech.com" style="display:inline-flex;align-items:center;gap:8px;color:#94a3b8;font-size:14px;font-family:Manrope,sans-serif;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0565fe'" onmouseout="this.style.color='#94a3b8'">
+        <span class="material-symbols-outlined" style="font-size:18px;">mail</span>
+        contact@olbiatech.com
+      </a>
+      <a href="tel:+447379974484" style="display:inline-flex;align-items:center;gap:8px;color:#94a3b8;font-size:14px;font-family:Manrope,sans-serif;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0565fe'" onmouseout="this.style.color='#94a3b8'">
+        <span class="material-symbols-outlined" style="font-size:18px;">call</span>
+        +44 (0) 7379974484
+      </a>
+      <span style="display:inline-flex;align-items:center;gap:8px;color:#94a3b8;font-size:14px;font-family:Manrope,sans-serif;">
+        <span class="material-symbols-outlined" style="font-size:18px;">location_on</span>
+        London, UK
+      </span>
+    </div>
+  </div>
+  <!-- Bottom bar -->
+  <div style="border-top:1px solid rgba(255,255,255,0.08);padding:20px 32px;">
+    <p style="color:#475569;font-size:13px;font-family:Manrope,sans-serif;max-width:1200px;margin:0 auto;width:100%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+      <span>&copy; 2026 Olbiatech Limited.</span>
+      <span>
+        <a href="#" style="color:#475569;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#475569'">Terms &amp; Conditions</a>
+        <span style="color:#334155;margin:0 8px;">|</span>
+        <a href="#" style="color:#475569;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#475569'">Privacy Policy</a>
+      </span>
+    </p>
+  </div>
+</footer>
+
+<!-- Scroll reveal -->
+<script>
+(function() {
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { obs.observe(el); });
+  setTimeout(function() {
+    els.forEach(function(el) {
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+    });
+  }, 80);
+})();
+</script>
+
+<!-- Form handler (UI only — connect to backend/Formspree/Make.com as needed) -->
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const name    = document.getElementById('full-name').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const errEl   = document.getElementById('form-error');
+  const sucEl   = document.getElementById('form-success');
+  const btn     = document.getElementById('submit-btn');
+
+  errEl.style.display = 'none';
+  sucEl.style.display = 'none';
+
+  if (!name || !email || !message) {
+    errEl.style.display = 'block';
+    return;
+  }
+
+  // TODO: Replace the block below with your real form submission
+  // e.g. fetch('https://formspree.io/f/YOUR_ID', { method:'POST', body: new FormData(e.target) })
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  setTimeout(function() {
+    sucEl.style.display = 'block';
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+    e.target.reset();
+  }, 1000);
+}
+</script>
+
+<script>
+(function() {
+  /* ─── Desktop Solutions dropdown ─── */
+  const dd       = document.getElementById('solutions-dd');
+  const panel    = document.getElementById('solutions-panel');
+  const btn      = document.getElementById('solutions-btn');
+  const chevron  = document.getElementById('solutions-chevron');
+  let hideTimer;
+
+  function openDD() {
+    clearTimeout(hideTimer);
+    panel.style.opacity    = '1';
+    panel.style.visibility = 'visible';
+    panel.style.transform  = 'translateY(0)';
+    btn.setAttribute('aria-expanded','true');
+    chevron.style.transform = 'rotate(180deg)';
+    btn.style.color = '#0565fe';
+  }
+  function closeDD() {
+    hideTimer = setTimeout(function() {
+      panel.style.opacity    = '0';
+      panel.style.visibility = 'hidden';
+      panel.style.transform  = 'translateY(10px)';
+      btn.setAttribute('aria-expanded','false');
+      chevron.style.transform = 'rotate(0deg)';
+      btn.style.color = '';
+    }, 130);
+  }
+
+  dd.addEventListener('mouseenter', openDD);
+  dd.addEventListener('mouseleave', closeDD);
+  btn.addEventListener('click', function() {
+    panel.style.visibility === 'hidden' ? openDD() : closeDD();
+  });
+  document.addEventListener('click', function(e) {
+    if (!dd.contains(e.target)) closeDD();
+  });
+
+  /* ─── Mobile burger ─── */
+  const burgerBtn  = document.getElementById('burger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const b1 = document.getElementById('b1');
+  const b2 = document.getElementById('b2');
+  const b3 = document.getElementById('b3');
+  let menuOpen = false;
+
+  burgerBtn.addEventListener('click', function() {
+    menuOpen = !menuOpen;
+    mobileMenu.style.display = menuOpen ? 'block' : 'none';
+    b1.style.transform = menuOpen ? 'translateY(7px) rotate(45deg)' : '';
+    b2.style.opacity   = menuOpen ? '0' : '1';
+    b3.style.transform = menuOpen ? 'translateY(-7px) rotate(-45deg)' : '';
+  });
+
+  /* ─── Mobile Solutions accordion ─── */
+  const mobBtn    = document.getElementById('mob-solutions-btn');
+  const mobPanel  = document.getElementById('mob-solutions-panel');
+  const mobChev   = document.getElementById('mob-chevron');
+  let mobOpen = false;
+
+  mobBtn.addEventListener('click', function() {
+    mobOpen = !mobOpen;
+    mobPanel.style.maxHeight   = mobOpen ? mobPanel.scrollHeight + 'px' : '0';
+    mobChev.style.transform    = mobOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+  });
+})();
+</script>
+
+</body>
+</html>
