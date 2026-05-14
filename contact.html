@@ -410,9 +410,9 @@
 })();
 </script>
 
-<!-- Form handler (UI only — connect to backend/Formspree/Make.com as needed) -->
+<!-- Form handler -->
 <script>
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
   const name    = document.getElementById('full-name').value.trim();
   const email   = document.getElementById('email').value.trim();
@@ -429,16 +429,32 @@ function handleSubmit(e) {
     return;
   }
 
-  // TODO: Replace the block below with your real form submission
-  // e.g. fetch('https://formspree.io/f/YOUR_ID', { method:'POST', body: new FormData(e.target) })
   btn.textContent = 'Sending...';
   btn.disabled = true;
-  setTimeout(function() {
+
+  try {
+    await fetch('https://helince.app.n8n.cloud/webhook/7d133361-ec01-4c5e-992d-8866e25fdcbc', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        full_name: name,
+        company:   document.getElementById('company').value.trim(),
+        email:     email,
+        phone:     document.getElementById('phone').value.trim(),
+        service:   document.getElementById('service').value,
+        message:   message
+      })
+    });
     sucEl.style.display = 'block';
+    e.target.reset();
+  } catch (err) {
+    errEl.textContent = 'Something went wrong. Please try again.';
+    errEl.style.display = 'block';
+  } finally {
     btn.textContent = 'Send Message';
     btn.disabled = false;
-    e.target.reset();
-  }, 1000);
+  }
 }
 </script>
 

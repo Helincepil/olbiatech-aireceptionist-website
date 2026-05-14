@@ -1381,4 +1381,311 @@
   });
 })();
 </script>
+
+<!-- ===== CHATBOT WIDGET ===== -->
+<style>
+  #chatbot-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background-color: #0565fe;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(5, 101, 254, 0.4);
+    z-index: 9999;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  #chatbot-toggle:hover {
+    background-color: #0452d4;
+    transform: scale(1.05);
+  }
+  #chatbot-toggle svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+  }
+  #chatbot-panel {
+    position: fixed;
+    bottom: 92px;
+    right: 24px;
+    width: 360px;
+    height: 500px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(13, 28, 46, 0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9998;
+    border: 1px solid #e6eeff;
+    transform-origin: bottom right;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
+  }
+  #chatbot-panel.cb-hidden {
+    transform: scale(0.85) translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  #chatbot-panel.cb-visible {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  .cb-header {
+    padding: 14px 16px;
+    background-color: #0d1c32;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .cb-status-dot {
+    width: 9px;
+    height: 9px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .cb-header-info { flex: 1; }
+  .cb-header-info h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.3;
+  }
+  .cb-header-info span {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #22c55e;
+  }
+  .cb-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #8899b0;
+    font-size: 18px;
+    line-height: 1;
+    padding: 4px;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cb-close-btn:hover { color: #ffffff; }
+  .cb-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #f8f9ff;
+  }
+  .cb-messages::-webkit-scrollbar { width: 4px; }
+  .cb-messages::-webkit-scrollbar-track { background: transparent; }
+  .cb-messages::-webkit-scrollbar-thumb { background: #c5c6cd; border-radius: 2px; }
+  .cb-msg { display: flex; max-width: 85%; }
+  .cb-msg.cb-bot  { align-self: flex-start; }
+  .cb-msg.cb-user { align-self: flex-end; }
+  .cb-msg.cb-error { align-self: flex-start; }
+  .cb-bubble {
+    padding: 9px 13px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+  .cb-msg.cb-bot .cb-bubble {
+    background: #ffffff;
+    color: #0d1c2e;
+    border: 1px solid #e6eeff;
+    border-bottom-left-radius: 4px;
+  }
+  .cb-msg.cb-user .cb-bubble {
+    background: #0565fe;
+    color: #ffffff;
+    border-bottom-right-radius: 4px;
+  }
+  .cb-msg.cb-error .cb-bubble {
+    background: #ffdad6;
+    color: #93000a;
+    border: 1px solid #ffb4ab;
+    border-bottom-left-radius: 4px;
+  }
+  .cb-typing {
+    padding: 0 16px 8px;
+    background: #f8f9ff;
+    flex-shrink: 0;
+  }
+  .cb-typing-dots {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    padding: 8px 12px;
+    background: #ffffff;
+    border: 1px solid #e6eeff;
+    border-radius: 12px;
+    border-bottom-left-radius: 4px;
+  }
+  .cb-typing-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #75777e;
+    border-radius: 50%;
+    animation: cb-bounce 1.2s infinite;
+  }
+  .cb-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .cb-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes cb-bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-5px); }
+  }
+  .cb-input-area {
+    padding: 12px 14px;
+    background: #ffffff;
+    border-top: 1px solid #e6eeff;
+    flex-shrink: 0;
+  }
+  .cb-input-area form { display: flex; gap: 8px; }
+  .cb-input-area input {
+    flex: 1;
+    padding: 9px 13px;
+    background: #f8f9ff;
+    border: 1px solid #c5c6cd;
+    border-radius: 8px;
+    color: #0d1c2e;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .cb-input-area input:focus { border-color: #0565fe; }
+  .cb-input-area input::placeholder { color: #75777e; }
+  .cb-input-area button {
+    padding: 9px 16px;
+    background-color: #0565fe;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+  }
+  .cb-input-area button:hover { background-color: #0452d4; }
+  .cb-input-area button:disabled { background-color: #b9c7e4; cursor: not-allowed; }
+  @media (max-width: 420px) {
+    #chatbot-panel { width: calc(100vw - 24px); right: 12px; bottom: 80px; }
+    #chatbot-toggle { right: 12px; }
+  }
+</style>
+
+<button id="chatbot-toggle" onclick="cbToggle()" aria-label="Destek Chatbotu Aç">
+  <svg id="cb-icon-chat" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+  <svg id="cb-icon-close" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+</button>
+
+<div id="chatbot-panel" class="cb-hidden" role="dialog" aria-label="Destek Sohbeti">
+  <div class="cb-header">
+    <div class="cb-status-dot"></div>
+    <div class="cb-header-info">
+      <h3>Müşteri Destek Asistanı</h3>
+      <span>Çevrimiçi</span>
+    </div>
+    <button class="cb-close-btn" onclick="cbToggle()" aria-label="Kapat">✕</button>
+  </div>
+  <div class="cb-messages" id="cb-messages">
+    <div class="cb-msg cb-bot">
+      <div class="cb-bubble">Merhaba! Ben yapay zeka destekli müşteri hizmetleri asistanıyım. Size nasıl yardımcı olabilirim?</div>
+    </div>
+  </div>
+  <div class="cb-typing" id="cb-typing" style="display:none;">
+    <div class="cb-typing-dots">
+      <div class="cb-typing-dot"></div>
+      <div class="cb-typing-dot"></div>
+      <div class="cb-typing-dot"></div>
+    </div>
+  </div>
+  <div class="cb-input-area">
+    <form id="cb-form">
+      <input type="text" id="cb-input" placeholder="Mesajınızı yazın..." autocomplete="off">
+      <button type="submit" id="cb-send">Gönder</button>
+    </form>
+  </div>
+</div>
+
+<script>
+(function() {
+  var cbOpen = false;
+  var cbHistory = [];
+  var panel    = document.getElementById('chatbot-panel');
+  var msgs     = document.getElementById('cb-messages');
+  var typing   = document.getElementById('cb-typing');
+  var form     = document.getElementById('cb-form');
+  var input    = document.getElementById('cb-input');
+  var sendBtn  = document.getElementById('cb-send');
+  var iconChat  = document.getElementById('cb-icon-chat');
+  var iconClose = document.getElementById('cb-icon-close');
+
+  window.cbToggle = function() {
+    cbOpen = !cbOpen;
+    panel.className = cbOpen ? 'cb-visible' : 'cb-hidden';
+    iconChat.style.display  = cbOpen ? 'none'  : 'block';
+    iconClose.style.display = cbOpen ? 'block' : 'none';
+    if (cbOpen) input.focus();
+  };
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var text = input.value.trim();
+    if (!text) return;
+    cbAddMsg(text, 'user');
+    input.value = '';
+    cbHistory.push({ role: 'user', content: text });
+    sendBtn.disabled = true;
+    typing.style.display = 'block';
+    msgs.scrollTop = msgs.scrollHeight;
+    try {
+      var res = await fetch('/api/sohbet', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mesajlar: cbHistory })
+      });
+      if (!res.ok) { var err = await res.json(); throw new Error(err.hata || 'Sunucu hatası'); }
+      var data = await res.json();
+      cbAddMsg(data.cevap, 'bot');
+      cbHistory.push({ role: 'assistant', content: data.cevap });
+    } catch(err) {
+      cbAddMsg('Hata oluştu: ' + err.message, 'error');
+      cbHistory.pop();
+    } finally {
+      sendBtn.disabled = false;
+      typing.style.display = 'none';
+      input.focus();
+    }
+  });
+
+  function cbAddMsg(text, type) {
+    var div = document.createElement('div');
+    div.className = 'cb-msg cb-' + type;
+    var bubble = document.createElement('div');
+    bubble.className = 'cb-bubble';
+    bubble.textContent = text;
+    div.appendChild(bubble);
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+})();
+</script>
+<!-- ===== /CHATBOT WIDGET ===== -->
 </body></html>
