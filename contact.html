@@ -433,18 +433,18 @@ async function handleSubmit(e) {
   btn.disabled = true;
 
   try {
+    const params = new URLSearchParams();
+    params.append('full_name', name);
+    params.append('company',   document.getElementById('company').value.trim());
+    params.append('email',     email);
+    params.append('phone',     document.getElementById('phone').value.trim());
+    params.append('service',   document.getElementById('service').value);
+    params.append('message',   message);
+
     await fetch('https://helince.app.n8n.cloud/webhook/7d133361-ec01-4c5e-992d-8866e25fdcbc', {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({
-        full_name: name,
-        company:   document.getElementById('company').value.trim(),
-        email:     email,
-        phone:     document.getElementById('phone').value.trim(),
-        service:   document.getElementById('service').value,
-        message:   message
-      })
+      body: params
     });
     sucEl.style.display = 'block';
     e.target.reset();
