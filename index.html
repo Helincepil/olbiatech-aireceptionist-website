@@ -1590,23 +1590,23 @@
   }
 </style>
 
-<button id="chatbot-toggle" onclick="cbToggle()" aria-label="Destek Chatbotu Aç">
+<button id="chatbot-toggle" onclick="cbToggle()" aria-label="Open Support Chat">
   <svg id="cb-icon-chat" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
   <svg id="cb-icon-close" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
 </button>
 
-<div id="chatbot-panel" class="cb-hidden" role="dialog" aria-label="Destek Sohbeti">
+<div id="chatbot-panel" class="cb-hidden" role="dialog" aria-label="Support Chat">
   <div class="cb-header">
     <div class="cb-status-dot"></div>
     <div class="cb-header-info">
-      <h3>Müşteri Destek Asistanı</h3>
-      <span>Çevrimiçi</span>
+      <h3>Oli — Olbiatech Assistant</h3>
+      <span>Online</span>
     </div>
-    <button class="cb-close-btn" onclick="cbToggle()" aria-label="Kapat">✕</button>
+    <button class="cb-close-btn" onclick="cbToggle()" aria-label="Close">✕</button>
   </div>
   <div class="cb-messages" id="cb-messages">
     <div class="cb-msg cb-bot">
-      <div class="cb-bubble">Merhaba! Ben yapay zeka destekli müşteri hizmetleri asistanıyım. Size nasıl yardımcı olabilirim?</div>
+      <div class="cb-bubble">Hi! I'm Oli, Olbiatech's AI assistant. I can answer your questions about our AI Receptionist service. How can I help?</div>
     </div>
   </div>
   <div class="cb-typing" id="cb-typing" style="display:none;">
@@ -1618,8 +1618,8 @@
   </div>
   <div class="cb-input-area">
     <form id="cb-form">
-      <input type="text" id="cb-input" placeholder="Mesajınızı yazın..." autocomplete="off">
-      <button type="submit" id="cb-send">Gönder</button>
+      <input type="text" id="cb-input" placeholder="Type your message..." autocomplete="off">
+      <button type="submit" id="cb-send">Send</button>
     </form>
   </div>
 </div>
@@ -1661,12 +1661,12 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mesajlar: cbHistory })
       });
-      if (!res.ok) { var err = await res.json(); throw new Error(err.hata || 'Sunucu hatası'); }
+      if (!res.ok) { var err = await res.json(); throw new Error(err.hata || 'Server error'); }
       var data = await res.json();
       cbAddMsg(data.cevap, 'bot');
       cbHistory.push({ role: 'assistant', content: data.cevap });
     } catch(err) {
-      cbAddMsg('Hata oluştu: ' + err.message, 'error');
+      cbAddMsg('An error occurred: ' + err.message, 'error');
       cbHistory.pop();
     } finally {
       sendBtn.disabled = false;
@@ -1680,7 +1680,19 @@
     div.className = 'cb-msg cb-' + type;
     var bubble = document.createElement('div');
     bubble.className = 'cb-bubble';
-    bubble.textContent = text;
+    if (type === 'bot') {
+      var escaped = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      var bolded = escaped.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      var linked = bolded.replace(
+        /(https?:\/\/[^\s<]+)/g,
+        '<a href="$1" target="_blank" rel="noopener noreferrer" style="color:#0565fe;text-decoration:underline;">$1</a>'
+      );
+      bubble.innerHTML = linked.split('\n').map(function(line) {
+        return '<div>' + (line === '' ? '&nbsp;' : line) + '</div>';
+      }).join('');
+    } else {
+      bubble.textContent = text;
+    }
     div.appendChild(bubble);
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;

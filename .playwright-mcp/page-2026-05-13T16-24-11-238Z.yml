@@ -1,0 +1,120 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "Olbiatech Logo" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+        - img "Olbiatech Logo" [ref=e6]
+      - generic [ref=e7]:
+        - button "Solutions" [ref=e9] [cursor=pointer]:
+          - text: Solutions
+          - img [ref=e10]
+        - link "How It Works" [ref=e12] [cursor=pointer]:
+          - /url: "#"
+        - link "About Us" [ref=e13] [cursor=pointer]:
+          - /url: about.html
+        - link "Contact" [ref=e14] [cursor=pointer]:
+          - /url: contact.html
+      - button "Get Started" [ref=e16] [cursor=pointer]
+  - main [ref=e17]:
+    - generic [ref=e19]:
+      - paragraph [ref=e20]: GET IN TOUCH
+      - heading "Contact Olbiatech" [level=1] [ref=e21]
+      - paragraph [ref=e22]: Have a question, want to discuss an automation idea, or would like to book a call? Send us a message and we'll get back to you.
+    - generic [ref=e23]:
+      - img [ref=e25]
+      - generic [ref=e28]:
+        - generic [ref=e30]:
+          - heading "Send us a message" [level=2] [ref=e31]
+          - generic [ref=e32]:
+            - generic [ref=e33]:
+              - generic [ref=e34]:
+                - generic [ref=e35]: Full Name *
+                - textbox "Full Name *" [ref=e36]:
+                  - /placeholder: Jane Smith
+                  - text: Test Kullanici
+              - generic [ref=e37]:
+                - generic [ref=e38]: Company Name
+                - textbox "Company Name" [ref=e39]:
+                  - /placeholder: Acme Ltd
+            - generic [ref=e40]:
+              - generic [ref=e41]:
+                - generic [ref=e42]: Email Address *
+                - textbox "Email Address *" [ref=e43]:
+                  - /placeholder: jane@company.com
+                  - text: test@test.com
+              - generic [ref=e44]:
+                - generic [ref=e45]: Phone Number
+                - textbox "Phone Number" [ref=e46]:
+                  - /placeholder: +44 7700 000000
+            - generic [ref=e47]:
+              - generic [ref=e48]: Service Interested In
+              - combobox "Service Interested In" [ref=e49] [cursor=pointer]:
+                - option "Select a service..." [disabled] [selected]
+                - option "AI Receptionist"
+                - option "Appointment Booking"
+                - option "Chatbot"
+                - option "Voicebot"
+                - option "Lead Generation"
+                - option "Lead Reactivation"
+                - option "Social Media Autopilot"
+                - option "WhatsApp & SMS Automation"
+                - option "Customer Support Automation"
+                - option "Document Processing"
+                - option "Internal Reporting / Status Notification"
+                - option "Custom Automations"
+                - option "Not sure yet"
+            - generic [ref=e50]:
+              - generic [ref=e51]: Message *
+              - textbox "Message *" [ref=e52]:
+                - /placeholder: Tell us a bit about your business and what you're looking to automate...
+                - text: Bu bir test mesajidir.
+            - generic [ref=e101]: Something went wrong. Please try again.
+            - button "Send Message" [ref=e53] [cursor=pointer]
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - heading "Contact details" [level=2] [ref=e56]
+            - generic [ref=e57]:
+              - generic [ref=e58]:
+                - generic [ref=e60]: mail
+                - generic [ref=e61]:
+                  - paragraph [ref=e62]: Email
+                  - link "contact@olbiatech.com" [ref=e63] [cursor=pointer]:
+                    - /url: mailto:contact@olbiatech.com
+              - generic [ref=e64]:
+                - generic [ref=e66]: call
+                - generic [ref=e67]:
+                  - paragraph [ref=e68]: Phone
+                  - link "+44 (0) 7379 974 484" [ref=e69] [cursor=pointer]:
+                    - /url: tel:+447379974484
+              - generic [ref=e70]:
+                - generic [ref=e72]: location_on
+                - generic [ref=e73]:
+                  - paragraph [ref=e74]: Based in
+                  - paragraph [ref=e75]: London, UK
+          - generic [ref=e79]:
+            - generic [ref=e81]: chat_bubble
+            - paragraph [ref=e82]: Need a faster response?
+            - paragraph [ref=e83]: Start a chat using the button in the bottom-right corner and request a call directly.
+  - contentinfo [ref=e84]:
+    - generic [ref=e85]:
+      - img "Olbiatech" [ref=e87]
+      - generic [ref=e88]:
+        - link "mail contact@olbiatech.com" [ref=e89] [cursor=pointer]:
+          - /url: mailto:contact@olbiatech.com
+          - generic [ref=e90]: mail
+          - text: contact@olbiatech.com
+        - link "call +44 (0) 7379974484" [ref=e91] [cursor=pointer]:
+          - /url: tel:+447379974484
+          - generic [ref=e92]: call
+          - text: +44 (0) 7379974484
+        - generic [ref=e93]:
+          - generic [ref=e94]: location_on
+          - text: London, UK
+    - paragraph [ref=e96]:
+      - generic [ref=e97]: © 2026 Olbiatech Limited.
+      - generic [ref=e98]:
+        - link "Terms & Conditions" [ref=e99] [cursor=pointer]:
+          - /url: "#"
+        - text: "|"
+        - link "Privacy Policy" [ref=e100] [cursor=pointer]:
+          - /url: "#"

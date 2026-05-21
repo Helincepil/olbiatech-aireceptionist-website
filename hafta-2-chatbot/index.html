@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Customer Support</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sohbet-kapsayici">
+        <!-- Header -->
+        <div class="sohbet-baslik">
+            <div class="baslik-sol">
+                <div class="durum-noktasi"></div>
+                <div>
+                    <h1>Customer Support Assistant</h1>
+                    <span class="durum-yazisi">Online</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Area -->
+        <div class="mesaj-alani" id="mesajAlani">
+            <!-- Welcome message -->
+            <div class="mesaj bot-mesaji">
+                <div class="mesaj-baloncugu">
+                    Hello! I'm your AI-powered customer support assistant. How can I help you today?
+                </div>
+            </div>
+        </div>
+
+        <!-- Typing Indicator -->
+        <div class="yazma-gostergesi" id="yazmaGostergesi" style="display: none;">
+            <div class="mesaj bot-mesaji">
+                <div class="mesaj-baloncugu yazma">
+                    <span class="nokta"></span>
+                    <span class="nokta"></span>
+                    <span class="nokta"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Input -->
+        <div class="mesaj-girisi">
+            <form id="mesajFormu">
+                <input
+                    type="text"
+                    id="mesajInput"
+                    placeholder="Type your message..."
+                    autocomplete="off"
+                >
+                <button type="submit" id="gonderButonu">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

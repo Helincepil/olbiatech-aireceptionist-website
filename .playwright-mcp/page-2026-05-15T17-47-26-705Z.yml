@@ -1,0 +1,8 @@
+- generic [ref=e2]:
+  - generic [ref=e6]:
+    - heading "Customer Support Assistant" [level=1] [ref=e7]
+    - text: Online
+  - generic [ref=e10]: Hello! I'm your AI-powered customer support assistant. How can I help you today?
+  - generic [ref=e12]:
+    - textbox "Type your message..." [ref=e13]
+    - button "Send" [ref=e14] [cursor=pointer]

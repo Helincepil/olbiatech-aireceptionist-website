@@ -1,0 +1,239 @@
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "Olbiatech Logo" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+        - img "Olbiatech Logo" [ref=e6]
+      - generic [ref=e7]:
+        - button "Solutions" [ref=e9] [cursor=pointer]:
+          - text: Solutions
+          - img [ref=e10]
+        - link "How It Works" [ref=e12] [cursor=pointer]:
+          - /url: "#hiw-section"
+        - link "About Us" [ref=e13] [cursor=pointer]:
+          - /url: about.html
+        - link "Contact" [ref=e14] [cursor=pointer]:
+          - /url: contact.html
+      - button "Get Started" [ref=e16] [cursor=pointer]
+  - main [ref=e17]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e22]: Available 24/7
+        - heading "A premium AI receptionist for modern businesses." [level=1] [ref=e24]
+        - paragraph [ref=e25]: Olbiatech answers calls, handles enquiries, and books appointments 24/7 — so every customer receives a polished first impression, even when your team is unavailable.
+        - generic [ref=e26]:
+          - button "Get Started" [ref=e27] [cursor=pointer]
+          - button "Watch Demo" [ref=e28] [cursor=pointer]
+      - img "Olbiatech Dashboard" [ref=e31]
+    - img [ref=e33]
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - paragraph [ref=e38]: REVENUE CALCULATOR
+        - heading "Calculate Your Lost Revenue" [level=2] [ref=e39]
+        - paragraph [ref=e40]: See exactly how much revenue slips away every year from missed calls.
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]: MISSED CALLS PER DAY
+              - generic [ref=e46]: 10 calls
+            - slider "MISSED CALLS PER DAY" [ref=e47] [cursor=pointer]: "10"
+          - generic [ref=e48]:
+            - generic [ref=e49]:
+              - generic [ref=e50]: AVERAGE SALE VALUE
+              - generic [ref=e51]: £50
+            - slider "AVERAGE SALE VALUE" [ref=e52] [cursor=pointer]: "50"
+          - generic [ref=e53]:
+            - generic [ref=e54]:
+              - generic [ref=e55]: DAILY REVENUE LOST
+              - generic [ref=e56]: £500
+            - paragraph [ref=e57]: Based on missed calls × average sale value
+        - generic [ref=e59]:
+          - paragraph [ref=e60]: YOU'RE MISSING OUT ON
+          - generic [ref=e61]: £0
+          - paragraph [ref=e62]: PER YEAR
+          - button "Start Saving Now" [ref=e64] [cursor=pointer]
+    - img [ref=e66]
+    - generic [ref=e69]:
+      - paragraph [ref=e70]: WHAT WE DO
+      - heading "AI can skyrocket your sales" [level=2] [ref=e71]
+      - paragraph [ref=e72]: Three ways Olbiatech turns every missed call into a captured opportunity.
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - generic [ref=e76]: phone_in_talk
+          - heading "Never Miss a Call — 24/7" [level=3] [ref=e77]
+          - paragraph [ref=e78]: Your AI receptionist answers every call instantly, qualifies the caller, and takes action around the clock.
+        - generic [ref=e79]:
+          - generic [ref=e81]: calendar_today
+          - heading "Turn Calls Into Booked Appointments" [level=3] [ref=e82]
+          - paragraph [ref=e83]: AI handles conversations, asks the right questions, and books appointments straight into your calendar or takes orders into your system.
+        - generic [ref=e84]:
+          - generic [ref=e86]: schedule
+          - heading "Save Time Without Hiring Staff" [level=3] [ref=e87]
+          - paragraph [ref=e88]: No missed calls, no callbacks, no extra payroll. AI replaces manual call handling so you can focus on the business.
+      - button "Explore Our Demo" [ref=e89] [cursor=pointer]
+    - generic [ref=e91]:
+      - paragraph [ref=e92]: THE PROCESS
+      - heading "How it works" [level=2] [ref=e93]
+      - paragraph [ref=e94]: Three simple steps from first ring to confirmed booking.
+      - generic [ref=e95]:
+        - generic [ref=e97]:
+          - generic [ref=e98]: "1"
+          - generic [ref=e99]: smart_toy
+          - heading "AI Handles Calls & Messages" [level=3] [ref=e100]
+          - paragraph [ref=e101]: Your AI receptionist answers every call and message, 24/7, never missing a customer.
+        - generic [ref=e102]:
+          - generic [ref=e103]: "2"
+          - generic [ref=e104]: chat_bubble
+          - heading "AI Engages with Customers" [level=3] [ref=e105]
+          - paragraph [ref=e106]: Natural conversations that understand context and respond intelligently in real time.
+        - generic [ref=e107]:
+          - generic [ref=e108]: "3"
+          - generic [ref=e109]: calendar_add_on
+          - heading "Books Appointments & Captures Orders" [level=3] [ref=e110]
+          - paragraph [ref=e111]: Syncs directly with your calendar and CRM — no manual work required.
+    - img [ref=e113]
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - paragraph [ref=e118]: CAPABILITIES
+        - heading "Designed for Absolute Precision" [level=2] [ref=e119]
+        - paragraph [ref=e120]: Our AI doesn't just answer phones — it manages your entire customer experience with the efficiency of a high-end concierge.
+      - generic [ref=e121]:
+        - generic [ref=e122]:
+          - generic [ref=e124]: schedule
+          - heading "24/7 Intelligent Answering" [level=3] [ref=e125]
+          - paragraph [ref=e126]: Always on, never tired. Your business is open even when you're asleep.
+        - generic [ref=e127]:
+          - generic [ref=e129]: call_merge
+          - heading "Smart Call Routing" [level=3] [ref=e130]
+          - paragraph [ref=e131]: Advanced logic to connect customers to the right person instantly based on intent.
+        - generic [ref=e132]:
+          - generic [ref=e134]: calendar_month
+          - heading "Automated Scheduling" [level=3] [ref=e135]
+          - paragraph [ref=e136]: Seamlessly syncs with your existing calendars to book appointments without friction.
+        - generic [ref=e137]:
+          - generic [ref=e139]: hub
+          - heading "CRM Integration" [level=3] [ref=e140]
+          - paragraph [ref=e141]: Automatically logs every interaction and transcript into your business CRM.
+    - generic [ref=e143]:
+      - generic [ref=e144]:
+        - paragraph [ref=e145]: HOW WE ONBOARD YOU
+        - heading "From Setup to Launch" [level=2] [ref=e146]
+        - paragraph [ref=e147]: A smooth, managed implementation process — we do the heavy lifting.
+      - generic [ref=e149]:
+        - generic [ref=e150]:
+          - generic: "1"
+          - generic [ref=e152]:
+            - heading "Discovery & Requirements" [level=4] [ref=e153]
+            - paragraph [ref=e154]: We understand your business, customer journey, existing systems, FAQs, booking process, and escalation rules.
+        - generic [ref=e155]:
+          - generic: "2"
+          - generic [ref=e157]:
+            - heading "Implementation" [level=4] [ref=e158]
+            - paragraph [ref=e159]: We design the AI workflow, configure the receptionist, build the knowledge base, and connect your calendar, CRM, and channels.
+        - generic [ref=e160]:
+          - generic: "3"
+          - generic [ref=e162]:
+            - heading "Go-Live Deployment" [level=4] [ref=e163]
+            - paragraph [ref=e164]: Once tested and approved, your AI receptionist goes live across phone, website chat, WhatsApp, SMS, and email.
+        - generic [ref=e165]:
+          - generic: "4"
+          - generic [ref=e167]:
+            - heading "Fine-Tuning" [level=4] [ref=e168]
+            - paragraph [ref=e169]: We review real interactions, improve responses, adjust workflows, and optimise based on customer behaviour and business feedback.
+        - generic [ref=e170]:
+          - generic: "5"
+          - generic [ref=e171]:
+            - heading "Monitoring & Continuous Improvement" [level=4] [ref=e172]
+            - paragraph [ref=e173]: We continue monitoring performance, identifying improvement areas, and making updates to keep your system accurate and commercially effective.
+    - generic [ref=e175]:
+      - paragraph [ref=e176]: GET STARTED TODAY
+      - heading "Ready to Grow Without Hiring More Staff?" [level=2] [ref=e177]
+      - paragraph [ref=e178]: Let your 24/7 AI receptionist handle calls, messages, bookings, FAQs, follow-ups, and after-hours enquiries — so your team can focus on what matters.
+      - button "Get Started Now" [ref=e180] [cursor=pointer]
+    - generic [ref=e183]:
+      - generic [ref=e184]:
+        - generic [ref=e189]: help
+        - paragraph [ref=e193]: FAQ
+        - heading "Frequently Asked Questions" [level=2] [ref=e194]
+      - generic [ref=e195]:
+        - generic [ref=e196]:
+          - button "How does it work? Does it really sound human? expand_more" [ref=e197] [cursor=pointer]:
+            - generic [ref=e198]: How does it work? Does it really sound human?
+            - generic [ref=e199]: expand_more
+          - generic [ref=e200]: Yes. Our AI is built for natural, human-like conversations. It understands context, responds smoothly, and can handle interruptions or more complex questions without sounding robotic. In most cases, callers don't realize they're speaking with an AI receptionist.
+        - generic [ref=e201]:
+          - button "How long does setup take? expand_more" [ref=e202] [cursor=pointer]:
+            - generic [ref=e203]: How long does setup take?
+            - generic [ref=e204]: expand_more
+          - generic [ref=e205]: Setup is completed in 7 days. You simply forward your calls to our number, we configure the AI using your business details, services and booking preferences. No technical knowledge required, no hardware to install and no downtime.
+        - generic [ref=e206]:
+          - button "Is it a Done-For-You Service? expand_more" [ref=e207] [cursor=pointer]:
+            - generic [ref=e208]: Is it a Done-For-You Service?
+            - generic [ref=e209]: expand_more
+          - generic [ref=e210]: Yes. An expert will create a custom AI for you, ensuring high conversion rates and setup in under 7 days.
+        - generic [ref=e211]:
+          - button "Does it integrate with my existing CRM? expand_more" [ref=e212] [cursor=pointer]:
+            - generic [ref=e213]: Does it integrate with my existing CRM?
+            - generic [ref=e214]: expand_more
+          - generic [ref=e215]: All call data and leads are automatically synced to your existing systems. The AI qualifies leads in real time, generates call transcripts, and keeps contact records up to date — your team always has full context without manual work.
+        - generic [ref=e216]:
+          - button "Can it work for my industry? expand_more" [ref=e217] [cursor=pointer]:
+            - generic [ref=e218]: Can it work for my industry?
+            - generic [ref=e219]: expand_more
+          - generic [ref=e220]: Yes. We tailor the AI to your specific niche, terminology, typical customer questions, and the workflows your team actually uses. Whether you run a plumbing business, a salon, or a fitness studio, it's trained to speak your business language.
+        - generic [ref=e221]:
+          - button "Can it actually book appointments and take payments? expand_more" [ref=e222] [cursor=pointer]:
+            - generic [ref=e223]: Can it actually book appointments and take payments?
+            - generic [ref=e224]: expand_more
+          - generic [ref=e225]: Yes. The AI connects to your calendar to book appointments in real time, checking availability, confirming details, and sending confirmations automatically. For payments, it can securely collect and process transactions through your existing payment provider.
+        - generic [ref=e226]:
+          - button "What happens if the AI can't handle a call? expand_more" [ref=e227] [cursor=pointer]:
+            - generic [ref=e228]: What happens if the AI can't handle a call?
+            - generic [ref=e229]: expand_more
+          - generic [ref=e230]: If a conversation requires a human touch, the AI detects it immediately and can transfer the call to your chosen number or capture a detailed message with all relevant context. Over time it learns from these situations to handle similar cases more effectively.
+        - generic [ref=e231]:
+          - button "Is there a contract, or can I cancel anytime? expand_more" [ref=e232] [cursor=pointer]:
+            - generic [ref=e233]: Is there a contract, or can I cancel anytime?
+            - generic [ref=e234]: expand_more
+          - generic [ref=e235]: No contracts required. You can cancel at any time with 30 days' notice, and you're covered by our 30-day money-back guarantee if it's not the right fit.
+        - generic [ref=e236]:
+          - button "How secure is my business information? expand_more" [ref=e237] [cursor=pointer]:
+            - generic [ref=e238]: How secure is my business information?
+            - generic [ref=e239]: expand_more
+          - generic [ref=e240]: We take security seriously. All call and customer data is encrypted in transit and at rest, access is restricted to authorised users only, and we never sell or share your business information with third parties.
+  - contentinfo [ref=e241]:
+    - generic [ref=e242]:
+      - img "Olbiatech" [ref=e244]
+      - generic [ref=e245]:
+        - link "mail contact@olbiatech.com" [ref=e246] [cursor=pointer]:
+          - /url: mailto:contact@olbiatech.com
+          - generic [ref=e247]: mail
+          - text: contact@olbiatech.com
+        - link "call +44 (0) 7379974484" [ref=e248] [cursor=pointer]:
+          - /url: tel:+447379974484
+          - generic [ref=e249]: call
+          - text: +44 (0) 7379974484
+        - generic [ref=e250]:
+          - generic [ref=e251]: location_on
+          - text: London, UK
+    - paragraph [ref=e253]:
+      - generic [ref=e254]: © 2026 Olbiatech Limited.
+      - generic [ref=e255]:
+        - link "Terms & Conditions" [ref=e256] [cursor=pointer]:
+          - /url: "#"
+        - text: "|"
+        - link "Privacy Policy" [ref=e257] [cursor=pointer]:
+          - /url: "#"
+  - button "Open Support Chat" [ref=e258] [cursor=pointer]:
+    - img [ref=e261]
+  - dialog "Support Chat" [ref=e263]:
+    - generic [ref=e264]:
+      - generic [ref=e266]:
+        - heading "Customer Support Assistant" [level=3] [ref=e267]
+        - text: Online
+      - button "Close" [ref=e268] [cursor=pointer]: ✕
+    - generic [ref=e271]: Hello! I'm your AI-powered customer support assistant. How can I help you today?
+    - generic [ref=e273]:
+      - textbox "Type your message..." [active] [ref=e274]
+      - button "Send" [ref=e275] [cursor=pointer]
