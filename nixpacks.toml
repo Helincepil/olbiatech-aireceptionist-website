@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["python311", "python311Packages.pip"]
+
+[phases.install]
+cmds = ["cd hafta-2-chatbot && pip install -r requirements.txt"]
+
+[start]
+cmd = "cd hafta-2-chatbot && python server.py"
