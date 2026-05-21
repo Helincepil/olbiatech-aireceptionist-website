@@ -1,1 +1,1 @@
-web: cd hafta-2-chatbot && pip install -r requirements.txt && python server.py
+web: cd hafta-2-chatbot && pip3 install -r requirements.txt && python3 server.py
