@@ -28,7 +28,7 @@ mesajFormu.addEventListener("submit", async (e) => {
 
   try {
     // Backend'e istek gonder
-    const yanit = const yanit = await fetch("https://olbiatech-aireceptionist-website-production.up.railway.app/api/sohbet", {
+    const yanit = await fetch("https://helinox.pythonanywhere.com/api/sohbet", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ mesajlar: sohbetGecmisi }),
