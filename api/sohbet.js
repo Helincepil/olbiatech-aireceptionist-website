@@ -1,10 +1,6 @@
-from http.server import BaseHTTPRequestHandler
-import json
-import os
-from anthropic import Anthropic
+import Anthropic from "@anthropic-ai/sdk";
 
-SYSTEM_PROMPT = """
-You are Oli, the AI assistant for Olbiatech. You are knowledgeable, friendly, and concise.
+const SYSTEM_PROMPT = `You are Oli, the AI assistant for Olbiatech. You are knowledgeable, friendly, and concise.
 
 ## About Olbiatech
 Olbiatech builds done-for-you AI solutions for service businesses. Every service is fully managed — clients don't need technical knowledge. The goal is to help businesses capture more leads, book more appointments, and run smoother operations using AI automation.
@@ -81,43 +77,52 @@ Closing sentence or call to action.
 
 - Keep each bullet short — one idea per line.
 - Maximum 5 bullets per response.
-- If the answer is simple, skip bullets entirely and just write 1-2 short paragraphs.
-""".strip()
+- If the answer is simple, skip bullets entirely and just write 1-2 short paragraphs.`;
 
-MODEL = "claude-haiku-4-5-20251001"
+const MODEL = "claude-haiku-4-5-20251001";
 
+const ALLOWED_ORIGINS = [
+  "https://aireceptionist.olbiatech.com",
+  "https://olbiatech.com",
+  "https://www.olbiatech.com",
+  "https://olbiatech-website.vercel.app",
+];
 
-class handler(BaseHTTPRequestHandler):
-    def do_POST(self):
-        try:
-            length = int(self.headers.get("Content-Length", 0))
-            body = json.loads(self.rfile.read(length).decode("utf-8"))
-            messages = body.get("mesajlar", [])
+export default async function handler(req, res) {
+  const origin = req.headers.origin || "";
+  const corsOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
 
-            if not messages:
-                self._respond(400, {"hata": "Mesaj bulunamadi"})
-                return
+  res.setHeader("Access-Control-Allow-Origin", corsOrigin);
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-            client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
-            response = client.messages.create(
-                model=MODEL,
-                max_tokens=1024,
-                system=SYSTEM_PROMPT,
-                messages=messages,
-            )
+  if (req.method === "OPTIONS") {
+    return res.status(204).end();
+  }
 
-            self._respond(200, {"cevap": response.content[0].text})
+  if (req.method !== "POST") {
+    return res.status(405).json({ hata: "Method not allowed" });
+  }
 
-        except Exception as e:
-            self._respond(500, {"hata": str(e)})
+  const { mesajlar } = req.body || {};
 
-    def _respond(self, status, data):
-        body = json.dumps(data).encode("utf-8")
-        self.send_response(status)
-        self.send_header("Content-Type", "application/json")
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-        self.wfile.write(body)
+  if (!mesajlar || !Array.isArray(mesajlar) || mesajlar.length === 0) {
+    return res.status(400).json({ hata: "Mesaj bulunamadi" });
+  }
 
-    def log_message(self, format, *args):
-        pass
+  try {
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+    const response = await client.messages.create({
+      model: MODEL,
+      max_tokens: 1024,
+      system: SYSTEM_PROMPT,
+      messages: mesajlar,
+    });
+
+    return res.status(200).json({ cevap: response.content[0].text });
+  } catch (err) {
+    console.error("Anthropic API error:", err.message);
+    return res.status(500).json({ hata: "Internal server error" });
+  }
+}
