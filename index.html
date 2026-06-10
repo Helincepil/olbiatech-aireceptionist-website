@@ -599,7 +599,7 @@
 
       <!-- Subtext -->
       <p class="hero-in hero-d3 font-body-lg text-on-surface-variant max-w-lg" style="font-size:18px;line-height:1.65;">
-        Olbiatech answers calls, handles enquiries, and books appointments 24/7, so every customer receives a polished first impression, even when your team is unavailable.
+        Olbiatech answers calls, replies instantly to Instagram, WhatsApp, and website messages, and books appointments 24/7; so you never miss a customer, even when your team is unavailable.
       </p>
 
       <!-- CTAs -->
@@ -1602,11 +1602,12 @@
       <h3>Oli — Olbiatech Assistant</h3>
       <span>Online</span>
     </div>
+    <button id="cb-lang-btn" onclick="cbToggleLang()" aria-label="Toggle language" style="background:none;border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;cursor:pointer;margin-right:6px;letter-spacing:0.5px;">TR</button>
     <button class="cb-close-btn" onclick="cbToggle()" aria-label="Close">✕</button>
   </div>
   <div class="cb-messages" id="cb-messages">
     <div class="cb-msg cb-bot">
-      <div class="cb-bubble">Hi! I'm Oli, Olbiatech's AI assistant. I can answer your questions about our AI Receptionist service. How can I help?</div>
+      <div class="cb-bubble" id="cb-welcome-bubble">Hi! I'm Oli, Olbiatech's AI assistant. I can answer your questions about our AI services. How can I help?</div>
     </div>
   </div>
   <div class="cb-typing" id="cb-typing" style="display:none;">
@@ -1628,6 +1629,7 @@
 (function() {
   var cbOpen = false;
   var cbHistory = [];
+  var cbLang = 'en';
   var panel    = document.getElementById('chatbot-panel');
   var msgs     = document.getElementById('cb-messages');
   var typing   = document.getElementById('cb-typing');
@@ -1636,6 +1638,22 @@
   var sendBtn  = document.getElementById('cb-send');
   var iconChat  = document.getElementById('cb-icon-chat');
   var iconClose = document.getElementById('cb-icon-close');
+  var langBtn   = document.getElementById('cb-lang-btn');
+  var welcomeBubble = document.getElementById('cb-welcome-bubble');
+
+  window.cbToggleLang = function() {
+    cbLang = cbLang === 'en' ? 'tr' : 'en';
+    langBtn.textContent = cbLang === 'en' ? 'TR' : 'EN';
+    if (cbLang === 'tr') {
+      input.placeholder = 'Mesajınızı yazın...';
+      sendBtn.textContent = 'Gönder';
+      if (welcomeBubble) welcomeBubble.textContent = 'Merhaba! Ben Oli, Olbiatech\'in yapay zeka asistanıyım. AI hizmetlerimiz hakkında sorularınızı yanıtlayabilirim. Size nasıl yardımcı olabilirim?';
+    } else {
+      input.placeholder = 'Type your message...';
+      sendBtn.textContent = 'Send';
+      if (welcomeBubble) welcomeBubble.textContent = 'Hi! I\'m Oli, Olbiatech\'s AI assistant. I can answer your questions about our AI services. How can I help?';
+    }
+  };
 
   window.cbToggle = function() {
     cbOpen = !cbOpen;
@@ -1659,7 +1677,7 @@
       var res = await fetch('/api/sohbet', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mesajlar: cbHistory })
+        body: JSON.stringify({ mesajlar: cbHistory, lang: cbLang })
       });
       if (!res.ok) { var err = await res.json(); throw new Error(err.hata || 'Server error'); }
       var data = await res.json();

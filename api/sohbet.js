@@ -45,7 +45,7 @@ Connects your tools, data, and team workflows into one unified system. Automates
 The founder's name is Helin Cepil. If you need to reference a person at Olbiatech, use this name exactly.
 
 ## Your Behaviour Rules
-1. Always respond in English.
+1. Always respond in the language specified by the user's session (English or Turkish). Never mix languages in a single response.
 2. Be concise and friendly — keep answers short and clear.
 3. Answer questions about Olbiatech's services using the information above.
 4. When a visitor shows interest, asks about pricing, wants to learn more, or is ready to move forward — invite them to book a free AI Audit Call and share this link: https://calendly.com/helincepil/olbiatech-ai-audit-call
@@ -107,11 +107,15 @@ export default async function handler(req, res) {
     return res.status(405).json({ hata: "Method not allowed" });
   }
 
-  const { mesajlar } = req.body || {};
+  const { mesajlar, lang } = req.body || {};
 
   if (!mesajlar || !Array.isArray(mesajlar) || mesajlar.length === 0) {
     return res.status(400).json({ hata: "Mesaj bulunamadi" });
   }
+
+  const langInstruction = lang === 'tr'
+    ? "\n\n## Active Language\nRespond ONLY in Turkish for this entire conversation."
+    : "\n\n## Active Language\nRespond ONLY in English for this entire conversation.";
 
   try {
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
@@ -119,7 +123,7 @@ export default async function handler(req, res) {
     const response = await client.messages.create({
       model: MODEL,
       max_tokens: 1024,
-      system: SYSTEM_PROMPT,
+      system: SYSTEM_PROMPT + langInstruction,
       messages: mesajlar,
     });
 
