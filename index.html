@@ -511,8 +511,15 @@
     <a class="text-[#0f172a] font-bold text-[18px] hover:text-[#0565fe] transition-all duration-300 font-body-md" href="contact.html">Contact</a>
   </div>
 
-  <!-- Right: CTA + Mobile burger -->
+  <!-- Right: Lang + CTA + Mobile burger -->
   <div class="flex items-center space-x-4">
+    <!-- Language flags -->
+    <div class="hidden md:flex items-center gap-1">
+      <button id="lang-en" onclick="setPageLang('en')" aria-label="English" title="English"
+        style="font-size:22px;background:none;border:none;cursor:pointer;padding:2px 4px;border-radius:6px;opacity:1;transition:opacity 0.2s,box-shadow 0.2s;box-shadow:0 0 0 2px #0565fe;">🇬🇧</button>
+      <button id="lang-tr" onclick="setPageLang('tr')" aria-label="Türkçe" title="Türkçe"
+        style="font-size:22px;background:none;border:none;cursor:pointer;padding:2px 4px;border-radius:6px;opacity:0.45;transition:opacity 0.2s,box-shadow 0.2s;">🇹🇷</button>
+    </div>
     <button id="burger-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px]" aria-label="Open menu">
       <span class="block w-6 h-[2px] bg-[#0f172a] rounded transition-all duration-300" id="b1"></span>
       <span class="block w-6 h-[2px] bg-[#0f172a] rounded transition-all duration-300" id="b2"></span>
@@ -570,6 +577,13 @@
   <a style="display:block;padding:14px 0;font-size:17px;font-weight:700;color:#0f172a;font-family:Manrope,sans-serif;text-decoration:none;border-bottom:1px solid #f1f5f9;" href="#hiw-section">How It Works</a>
   <a style="display:block;padding:14px 0;font-size:17px;font-weight:700;color:#0f172a;font-family:Manrope,sans-serif;text-decoration:none;border-bottom:1px solid #f1f5f9;" href="about.html">About Us</a>
   <a style="display:block;padding:14px 0;font-size:17px;font-weight:700;color:#0f172a;font-family:Manrope,sans-serif;text-decoration:none;" href="contact.html">Contact</a>
+  <!-- Language flags mobile -->
+  <div style="display:flex;align-items:center;gap:8px;padding:14px 0;">
+    <button id="lang-en-mob" onclick="setPageLang('en')" aria-label="English" title="English"
+      style="font-size:24px;background:none;border:none;cursor:pointer;padding:2px 4px;border-radius:6px;opacity:1;box-shadow:0 0 0 2px #0565fe;transition:opacity 0.2s,box-shadow 0.2s;">🇬🇧</button>
+    <button id="lang-tr-mob" onclick="setPageLang('tr')" aria-label="Türkçe" title="Türkçe"
+      style="font-size:24px;background:none;border:none;cursor:pointer;padding:2px 4px;border-radius:6px;opacity:0.45;transition:opacity 0.2s,box-shadow 0.2s;">🇹🇷</button>
+  </div>
 </div>
 </nav>
 <main class="pt-20">
@@ -1602,7 +1616,6 @@
       <h3>Oli — Olbiatech Assistant</h3>
       <span>Online</span>
     </div>
-    <button id="cb-lang-btn" onclick="cbToggleLang()" aria-label="Toggle language" style="background:none;border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;cursor:pointer;margin-right:6px;letter-spacing:0.5px;">TR</button>
     <button class="cb-close-btn" onclick="cbToggle()" aria-label="Close">✕</button>
   </div>
   <div class="cb-messages" id="cb-messages">
@@ -1626,10 +1639,41 @@
 </div>
 
 <script>
+window.pageLang = 'en';
+
+window.setPageLang = function(lang) {
+  window.pageLang = lang;
+  var isTr = lang === 'tr';
+  // Desktop buttons
+  var enBtn  = document.getElementById('lang-en');
+  var trBtn  = document.getElementById('lang-tr');
+  // Mobile buttons
+  var enMob  = document.getElementById('lang-en-mob');
+  var trMob  = document.getElementById('lang-tr-mob');
+  var activeStyle  = 'opacity:1;box-shadow:0 0 0 2px #0565fe;';
+  var inactiveStyle = 'opacity:0.45;box-shadow:none;';
+  if (enBtn)  enBtn.style.cssText  += isTr ? inactiveStyle : activeStyle;
+  if (trBtn)  trBtn.style.cssText  += isTr ? activeStyle   : inactiveStyle;
+  if (enMob)  enMob.style.cssText  += isTr ? inactiveStyle : activeStyle;
+  if (trMob)  trMob.style.cssText  += isTr ? activeStyle   : inactiveStyle;
+  // Chatbot UI
+  var input        = document.getElementById('cb-input');
+  var sendBtn      = document.getElementById('cb-send');
+  var welcomeBubble = document.getElementById('cb-welcome-bubble');
+  if (isTr) {
+    if (input)        input.placeholder = 'Mesajınızı yazın...';
+    if (sendBtn)      sendBtn.textContent = 'Gönder';
+    if (welcomeBubble) welcomeBubble.textContent = 'Merhaba! Ben Oli, Olbiatech\'in yapay zeka asistanıyım. AI hizmetlerimiz hakkında sorularınızı yanıtlayabilirim. Size nasıl yardımcı olabilirim?';
+  } else {
+    if (input)        input.placeholder = 'Type your message...';
+    if (sendBtn)      sendBtn.textContent = 'Send';
+    if (welcomeBubble) welcomeBubble.textContent = 'Hi! I\'m Oli, Olbiatech\'s AI assistant. I can answer your questions about our AI services. How can I help?';
+  }
+};
+
 (function() {
   var cbOpen = false;
   var cbHistory = [];
-  var cbLang = 'en';
   var panel    = document.getElementById('chatbot-panel');
   var msgs     = document.getElementById('cb-messages');
   var typing   = document.getElementById('cb-typing');
@@ -1638,22 +1682,6 @@
   var sendBtn  = document.getElementById('cb-send');
   var iconChat  = document.getElementById('cb-icon-chat');
   var iconClose = document.getElementById('cb-icon-close');
-  var langBtn   = document.getElementById('cb-lang-btn');
-  var welcomeBubble = document.getElementById('cb-welcome-bubble');
-
-  window.cbToggleLang = function() {
-    cbLang = cbLang === 'en' ? 'tr' : 'en';
-    langBtn.textContent = cbLang === 'en' ? 'TR' : 'EN';
-    if (cbLang === 'tr') {
-      input.placeholder = 'Mesajınızı yazın...';
-      sendBtn.textContent = 'Gönder';
-      if (welcomeBubble) welcomeBubble.textContent = 'Merhaba! Ben Oli, Olbiatech\'in yapay zeka asistanıyım. AI hizmetlerimiz hakkında sorularınızı yanıtlayabilirim. Size nasıl yardımcı olabilirim?';
-    } else {
-      input.placeholder = 'Type your message...';
-      sendBtn.textContent = 'Send';
-      if (welcomeBubble) welcomeBubble.textContent = 'Hi! I\'m Oli, Olbiatech\'s AI assistant. I can answer your questions about our AI services. How can I help?';
-    }
-  };
 
   window.cbToggle = function() {
     cbOpen = !cbOpen;
@@ -1677,7 +1705,7 @@
       var res = await fetch('/api/sohbet', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mesajlar: cbHistory, lang: cbLang })
+        body: JSON.stringify({ mesajlar: cbHistory, lang: window.pageLang })
       });
       if (!res.ok) { var err = await res.json(); throw new Error(err.hata || 'Server error'); }
       var data = await res.json();
