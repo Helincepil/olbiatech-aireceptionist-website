@@ -87,6 +87,7 @@ const MODEL = "claude-haiku-4-5-20251001";
 const ALLOWED_ORIGINS = [
   "https://aireceptionist.olbiatech.com",
   "https://olbiatech.com",
+  "https://www.olbiatech.com",
   "https://olbiatech-website.vercel.app",
 ];
 
