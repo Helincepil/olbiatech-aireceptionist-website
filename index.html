@@ -1647,12 +1647,10 @@ window.setPageLang = function(lang) {
   // Mobile buttons
   var enMob  = document.getElementById('lang-en-mob');
   var trMob  = document.getElementById('lang-tr-mob');
-  var activeStyle  = 'opacity:1;box-shadow:0 0 0 2px #0565fe;';
-  var inactiveStyle = 'opacity:0.45;box-shadow:none;';
-  if (enBtn)  enBtn.style.cssText  += isTr ? inactiveStyle : activeStyle;
-  if (trBtn)  trBtn.style.cssText  += isTr ? activeStyle   : inactiveStyle;
-  if (enMob)  enMob.style.cssText  += isTr ? inactiveStyle : activeStyle;
-  if (trMob)  trMob.style.cssText  += isTr ? activeStyle   : inactiveStyle;
+  function setActive(btn) { if(btn){ btn.style.opacity='1'; btn.style.boxShadow='0 0 0 2px #0565fe'; } }
+  function setInactive(btn) { if(btn){ btn.style.opacity='0.45'; btn.style.boxShadow='none'; } }
+  if (isTr) { setInactive(enBtn); setActive(trBtn); setInactive(enMob); setActive(trMob); }
+  else       { setActive(enBtn); setInactive(trBtn); setActive(enMob); setInactive(trMob); }
   // Chatbot UI
   var input        = document.getElementById('cb-input');
   var sendBtn      = document.getElementById('cb-send');
