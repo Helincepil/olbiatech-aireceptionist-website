@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="light" lang="en" data-i18n-title="page-title">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Terms of Service | Olbiatech</title>
+<meta name="description" content="Terms of Service for Olbiatech Limited — AI receptionist, messaging automation, appointment booking, and related services."/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root { --blue:#0565fe; --navy:#0f172a; --ink:#0d1c2e; --muted:#475569; --bg:#f8f9ff; --line:#e6eeff; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; }
+  a { color:var(--blue); }
+  header.site { position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(15,23,42,0.07); }
+  header.site .wrap { max-width:1000px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  header.site img { height:34px; width:auto; display:block; }
+  .lang { display:flex; align-items:center; gap:4px; }
+  .lang button { font-size:22px; background:none; border:none; cursor:pointer; padding:2px 4px; border-radius:6px; transition:opacity .2s,box-shadow .2s; }
+  .back { font-family:'Manrope',sans-serif; font-weight:700; font-size:14px; color:var(--navy); text-decoration:none; display:inline-flex; align-items:center; gap:6px; }
+  .back:hover { color:var(--blue); }
+  .nav-right { display:flex; align-items:center; gap:18px; }
+  .hero { max-width:1000px; margin:0 auto; padding:56px 24px 24px; }
+  .hero h1 { font-family:'Manrope',sans-serif; font-weight:800; font-size:40px; letter-spacing:-0.02em; margin:0 0 10px; color:var(--navy); }
+  .hero .updated { color:var(--muted); font-size:14px; margin:0; }
+  .note { margin:18px 0 0; padding:12px 16px; background:#eff4ff; border:1px solid var(--line); border-radius:10px; font-size:13.5px; color:var(--muted); }
+  main { max-width:1000px; margin:0 auto; padding:8px 24px 72px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:40px clamp(20px,5vw,56px); box-shadow:0 4px 24px rgba(15,23,42,0.04); }
+  .card h2 { font-family:'Manrope',sans-serif; font-weight:700; font-size:21px; color:var(--navy); margin:34px 0 10px; }
+  .card h2:first-child { margin-top:0; }
+  .card p, .card li { font-size:15.5px; color:#293548; }
+  .card ul { padding-left:20px; margin:8px 0; }
+  .card li { margin:5px 0; }
+  footer { background:linear-gradient(160deg,#111827 0%,#1a2744 50%,#0f172a 100%); border-top:1px solid rgba(255,255,255,0.08); margin-top:40px; }
+  footer .fwrap { max-width:1000px; margin:0 auto; padding:40px 24px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; }
+  footer a, footer span.c { color:#94a3b8; font-size:14px; font-family:'Manrope',sans-serif; text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
+  footer a:hover { color:var(--blue); }
+  footer .bottom { border-top:1px solid rgba(255,255,255,0.08); padding:18px 24px; }
+  footer .bottom p { color:#475569; font-size:13px; font-family:'Manrope',sans-serif; max-width:1000px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  footer .bottom a { color:#94a3b8; text-decoration:none; }
+  footer .bottom a:hover { color:#fff; }
+  @media (max-width:560px){ .hero h1{font-size:30px;} .nav-right{gap:12px;} .back span.t{display:none;} }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="/" aria-label="Olbiatech home"><img src="logo-transparent.png" alt="Olbiatech"/></a>
+    <div class="nav-right">
+      <a class="back" href="/"><span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span><span class="t" data-i18n="back-to-site">Back to site</span></a>
+      <div class="lang">
+        <button id="lang-en" onclick="setPageLang('en')" aria-label="English" title="English">🇬🇧</button>
+        <button id="lang-tr" onclick="setPageLang('tr')" aria-label="Türkçe" title="Türkçe">🇹🇷</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1 data-i18n="page-h1">Terms of Service</h1>
+  <p class="updated"><span data-i18n="updated-label">Last updated:</span> <span data-i18n="updated-date">30 June 2026</span></p>
+  <p class="note" data-i18n="prevail-note">These terms are published in English and Turkish. In case of any discrepancy, the English version prevails.</p>
+</section>
+
+<main>
+  <div class="card">
+
+    <!-- ============ ENGLISH ============ -->
+    <div data-lang-content="en">
+      <h2>1. Agreement</h2>
+      <p>These Terms of Service (“Terms”) govern your use of the services provided by <strong>Olbiatech Limited</strong> (“Olbiatech”, “we”, “us”), a company registered in England &amp; Wales at 17 Green Lanes, London N16 9BS, United Kingdom. By using our services you agree to these Terms.</p>
+
+      <h2>2. Services</h2>
+      <p>Olbiatech provides AI-powered customer-communication services, which may include: an <strong>AI receptionist</strong> (voice agent), automated replies on <strong>Instagram and Facebook Messenger</strong> and on websites, appointment booking and <strong>Google Calendar</strong> integration, lead capture, and related automations. Specific scope is set out in your order or plan.</p>
+
+      <h2>3. Accounts &amp; eligibility</h2>
+      <p>Our services are intended for businesses. You are responsible for the accuracy of the information you provide and for maintaining the confidentiality of any access credentials.</p>
+
+      <h2>4. Acceptable use</h2>
+      <p>You agree not to use the services to: break the law; send spam or unsolicited messages in breach of platform rules; transmit harmful, fraudulent, or abusive content; infringe others’ rights; or attempt to disrupt or reverse-engineer the services.</p>
+
+      <h2>5. AI outputs &amp; human oversight</h2>
+      <p>The services use AI to generate responses. AI outputs may contain errors and are provided to assist, not replace, human judgement. You are responsible for reviewing and supervising automated communications sent on your behalf.</p>
+
+      <h2>6. Your responsibilities</h2>
+      <ul>
+        <li>Use the services lawfully and obtain any consents/notices required for processing your customers’ data.</li>
+        <li>Comply with the terms of connected platforms — including the <strong>Meta Platform Terms</strong> and <strong>Google API Services</strong> policies — when you enable those integrations.</li>
+        <li>Ensure your content and offers are accurate and not misleading.</li>
+      </ul>
+
+      <h2>7. Third-party platforms</h2>
+      <p>The services integrate with third parties (e.g. Meta/Instagram, Google, and our voice/AI providers). Your use of those platforms is also subject to their own terms, and we are not responsible for their availability or changes.</p>
+
+      <h2>8. Fees, billing &amp; term</h2>
+      <p>Fees, billing cycle, and cancellation terms are set out in your order or plan. Unless stated otherwise, fees are payable in advance and are non-refundable for periods already started. Either party may terminate as described in the order.</p>
+
+      <h2>9. Intellectual property</h2>
+      <p>Olbiatech retains all rights in its software, models, and materials. You retain rights in your own content. You grant us the rights necessary to operate the services for you.</p>
+
+      <h2>10. Data protection</h2>
+      <p>Our processing of personal data is described in our <a href="/privacy-policy">Privacy Policy</a>. Where we process personal data on your behalf, we do so as your processor under appropriate data-processing terms.</p>
+
+      <h2>11. Disclaimers</h2>
+      <p>The services are provided “as is” to the fullest extent permitted by law. We do not warrant that the services will be uninterrupted or error-free.</p>
+
+      <h2>12. Limitation of liability</h2>
+      <p>To the fullest extent permitted by law, Olbiatech is not liable for indirect or consequential losses, and our total liability is limited to the fees paid for the services in the 12 months preceding the claim.</p>
+
+      <h2>13. Changes</h2>
+      <p>We may update these Terms from time to time. Material changes will be reflected by updating the “Last updated” date above.</p>
+
+      <h2>14. Governing law</h2>
+      <p>These Terms are governed by the laws of England &amp; Wales, and the courts of England &amp; Wales have exclusive jurisdiction.</p>
+
+      <h2>15. Contact</h2>
+      <p>Olbiatech Limited · 17 Green Lanes, London N16 9BS, United Kingdom · <a href="mailto:contact@olbiatech.com">contact@olbiatech.com</a> · +44 (0) 7379 974484</p>
+    </div>
+
+    <!-- ============ TÜRKÇE ============ -->
+    <div data-lang-content="tr" style="display:none;">
+      <h2>1. Sözleşme</h2>
+      <p>Bu Hizmet Şartları (“Şartlar”), İngiltere &amp; Galler’de 17 Green Lanes, London N16 9BS, Birleşik Krallık adresinde kayıtlı <strong>Olbiatech Limited</strong> (“Olbiatech”, “biz”) tarafından sağlanan hizmetlerin kullanımını düzenler. Hizmetlerimizi kullanarak bu Şartları kabul edersiniz.</p>
+
+      <h2>2. Hizmetler</h2>
+      <p>Olbiatech, yapay zeka destekli müşteri iletişim hizmetleri sunar: <strong>AI resepsiyonist</strong> (sesli ajan), <strong>Instagram ve Facebook Messenger</strong> ile web sitelerinde otomatik yanıtlar, randevu oluşturma ve <strong>Google Takvim</strong> entegrasyonu, lead yakalama ve ilgili otomasyonlar. Kapsam, siparişinizde veya planınızda belirtilir.</p>
+
+      <h2>3. Hesaplar &amp; uygunluk</h2>
+      <p>Hizmetlerimiz işletmelere yöneliktir. Verdiğiniz bilgilerin doğruluğundan ve erişim kimlik bilgilerinizin gizliliğinden siz sorumlusunuz.</p>
+
+      <h2>4. Kabul edilebilir kullanım</h2>
+      <p>Hizmetleri şu amaçlarla kullanmamayı kabul edersiniz: yasayı ihlal etmek; platform kurallarını çiğneyerek spam/istenmeyen mesaj göndermek; zararlı, hileli veya kötüye kullanım içeren içerik iletmek; başkalarının haklarını ihlal etmek; hizmetleri bozmaya veya tersine mühendislik yapmaya çalışmak.</p>
+
+      <h2>5. AI çıktıları &amp; insan denetimi</h2>
+      <p>Hizmetler yanıt üretmek için yapay zeka kullanır. AI çıktıları hata içerebilir ve insan kararının yerini almak için değil, ona yardımcı olmak için sunulur. Adınıza gönderilen otomatik iletişimleri gözden geçirmek ve denetlemek sizin sorumluluğunuzdadır.</p>
+
+      <h2>6. Sorumluluklarınız</h2>
+      <ul>
+        <li>Hizmetleri yasalara uygun kullanın ve müşterilerinizin verilerinin işlenmesi için gereken onay/bildirimleri alın.</li>
+        <li>Entegrasyonları etkinleştirdiğinizde bağlı platformların şartlarına — <strong>Meta Platform Şartları</strong> ve <strong>Google API Services</strong> politikaları dâhil — uyun.</li>
+        <li>İçerik ve tekliflerinizin doğru ve yanıltıcı olmadığından emin olun.</li>
+      </ul>
+
+      <h2>7. Üçüncü taraf platformlar</h2>
+      <p>Hizmetler üçüncü taraflarla (ör. Meta/Instagram, Google ve ses/AI sağlayıcılarımız) entegre olur. Bu platformları kullanımınız onların kendi şartlarına tabidir; erişilebilirliklerinden veya değişikliklerinden sorumlu değiliz.</p>
+
+      <h2>8. Ücretler, faturalama &amp; süre</h2>
+      <p>Ücretler, faturalama dönemi ve iptal koşulları siparişinizde veya planınızda belirtilir. Aksi belirtilmedikçe ücretler peşin ödenir ve başlamış dönemler için iade edilmez. Taraflar siparişte tanımlandığı şekilde sözleşmeyi sonlandırabilir.</p>
+
+      <h2>9. Fikri mülkiyet</h2>
+      <p>Olbiatech, yazılımı, modelleri ve materyalleri üzerindeki tüm hakları saklı tutar. Kendi içeriğinizdeki haklar sizde kalır. Hizmetleri sizin için işletmemiz için gereken hakları bize verirsiniz.</p>
+
+      <h2>10. Veri koruma</h2>
+      <p>Kişisel verileri işlememiz <a href="/privacy-policy">Gizlilik Politikası</a>’nda açıklanır. Kişisel verileri sizin adınıza işlediğimizde, uygun veri-işleme şartları altında işleyeniniz olarak hareket ederiz.</p>
+
+      <h2>11. Feragatnameler</h2>
+      <p>Hizmetler, yasaların izin verdiği azami ölçüde “olduğu gibi” sunulur. Hizmetlerin kesintisiz veya hatasız olacağını garanti etmeyiz.</p>
+
+      <h2>12. Sorumluluğun sınırlandırılması</h2>
+      <p>Yasaların izin verdiği azami ölçüde Olbiatech, dolaylı veya sonuç niteliğindeki zararlardan sorumlu değildir; toplam sorumluluğumuz, talepten önceki 12 ayda hizmetler için ödenen ücretlerle sınırlıdır.</p>
+
+      <h2>13. Değişiklikler</h2>
+      <p>Bu Şartları zaman zaman güncelleyebiliriz. Önemli değişiklikler yukarıdaki “Son güncelleme” tarihi güncellenerek yansıtılır.</p>
+
+      <h2>14. Uygulanacak hukuk</h2>
+      <p>Bu Şartlar İngiltere &amp; Galler hukukuna tabidir ve İngiltere &amp; Galler mahkemeleri münhasıran yetkilidir.</p>
+
+      <h2>15. İletişim</h2>
+      <p>Olbiatech Limited · 17 Green Lanes, London N16 9BS, Birleşik Krallık · <a href="mailto:contact@olbiatech.com">contact@olbiatech.com</a> · +44 (0) 7379 974484</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="fwrap">
+    <a href="mailto:contact@olbiatech.com"><span class="material-symbols-outlined" style="font-size:18px;">mail</span>contact@olbiatech.com</a>
+    <span class="c"><span class="material-symbols-outlined" style="font-size:18px;">location_on</span>London, UK</span>
+  </div>
+  <div class="bottom">
+    <p>
+      <span data-i18n="footer-copy">© 2026 Olbiatech Limited.</span>
+      <span>
+        <a href="/terms-of-service" data-i18n="footer-terms">Terms &amp; Conditions</a>
+        <span style="color:#334155;margin:0 8px;">|</span>
+        <a href="/privacy-policy" data-i18n="footer-privacy">Privacy Policy</a>
+        <span style="color:#334155;margin:0 8px;">|</span>
+        <a href="/data-deletion" data-i18n="footer-data">Data Deletion</a>
+      </span>
+    </p>
+  </div>
+</footer>
+
+<script>
+  window.translations = {
+    en: {
+      'page-title': 'Terms of Service | Olbiatech',
+      'page-h1': 'Terms of Service',
+      'updated-label': 'Last updated:',
+      'updated-date': '30 June 2026',
+      'prevail-note': 'These terms are published in English and Turkish. In case of any discrepancy, the English version prevails.',
+      'back-to-site': 'Back to site',
+      'footer-copy': '© 2026 Olbiatech Limited.',
+      'footer-terms': 'Terms & Conditions',
+      'footer-privacy': 'Privacy Policy',
+      'footer-data': 'Data Deletion'
+    },
+    tr: {
+      'page-title': 'Hizmet Şartları | Olbiatech',
+      'page-h1': 'Hizmet Şartları',
+      'updated-label': 'Son güncelleme:',
+      'updated-date': '30 Haziran 2026',
+      'prevail-note': 'Bu şartlar İngilizce ve Türkçe olarak yayımlanır. Herhangi bir tutarsızlık hâlinde İngilizce sürüm geçerlidir.',
+      'back-to-site': 'Siteye dön',
+      'footer-copy': '© 2026 Olbiatech Limited.',
+      'footer-terms': 'Şartlar & Koşullar',
+      'footer-privacy': 'Gizlilik Politikası',
+      'footer-data': 'Veri Silme'
+    }
+  };
+</script>
+<script src="/assets/i18n.js"></script>
+</body>
+</html>

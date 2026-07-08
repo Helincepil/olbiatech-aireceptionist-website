@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="light" lang="en" data-i18n-title="page-title">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Privacy Policy | Olbiatech</title>
+<meta name="description" content="Olbiatech Limited privacy policy — how we collect, use, and protect personal data across our AI receptionist, messaging, and calendar services."/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root { --blue:#0565fe; --navy:#0f172a; --ink:#0d1c2e; --muted:#475569; --bg:#f8f9ff; --line:#e6eeff; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; }
+  .font-manrope { font-family:'Manrope',sans-serif; }
+  a { color:var(--blue); }
+  /* Header */
+  header.site { position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(15,23,42,0.07); }
+  header.site .wrap { max-width:1000px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  header.site img { height:34px; width:auto; display:block; }
+  .lang { display:flex; align-items:center; gap:4px; }
+  .lang button { font-size:22px; background:none; border:none; cursor:pointer; padding:2px 4px; border-radius:6px; transition:opacity .2s,box-shadow .2s; }
+  .back { font-family:'Manrope',sans-serif; font-weight:700; font-size:14px; color:var(--navy); text-decoration:none; display:inline-flex; align-items:center; gap:6px; }
+  .back:hover { color:var(--blue); }
+  .nav-right { display:flex; align-items:center; gap:18px; }
+  /* Hero */
+  .hero { max-width:1000px; margin:0 auto; padding:56px 24px 24px; }
+  .hero h1 { font-family:'Manrope',sans-serif; font-weight:800; font-size:40px; letter-spacing:-0.02em; margin:0 0 10px; color:var(--navy); }
+  .hero .updated { color:var(--muted); font-size:14px; margin:0; }
+  .note { margin:18px 0 0; padding:12px 16px; background:#eff4ff; border:1px solid var(--line); border-radius:10px; font-size:13.5px; color:var(--muted); }
+  /* Content */
+  main { max-width:1000px; margin:0 auto; padding:8px 24px 72px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:40px clamp(20px,5vw,56px); box-shadow:0 4px 24px rgba(15,23,42,0.04); }
+  .card h2 { font-family:'Manrope',sans-serif; font-weight:700; font-size:21px; color:var(--navy); margin:34px 0 10px; }
+  .card h2:first-child { margin-top:0; }
+  .card h3 { font-family:'Manrope',sans-serif; font-weight:700; font-size:16px; color:var(--navy); margin:20px 0 6px; }
+  .card p, .card li { font-size:15.5px; color:#293548; }
+  .card ul { padding-left:20px; margin:8px 0; }
+  .card li { margin:5px 0; }
+  .card a { word-break:break-word; }
+  .pill { display:inline-block; font-family:'Manrope',sans-serif; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--blue); background:#eff4ff; border:1px solid var(--line); border-radius:999px; padding:4px 10px; margin-bottom:6px; }
+  /* Footer */
+  footer { background:linear-gradient(160deg,#111827 0%,#1a2744 50%,#0f172a 100%); border-top:1px solid rgba(255,255,255,0.08); margin-top:40px; }
+  footer .fwrap { max-width:1000px; margin:0 auto; padding:40px 24px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; }
+  footer a, footer span.c { color:#94a3b8; font-size:14px; font-family:'Manrope',sans-serif; text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
+  footer a:hover { color:var(--blue); }
+  footer .bottom { border-top:1px solid rgba(255,255,255,0.08); padding:18px 24px; }
+  footer .bottom p { color:#475569; font-size:13px; font-family:'Manrope',sans-serif; max-width:1000px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  footer .bottom a { color:#94a3b8; text-decoration:none; }
+  footer .bottom a:hover { color:#fff; }
+  @media (max-width:560px){ .hero h1{font-size:30px;} .nav-right{gap:12px;} .back span.t{display:none;} }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="/" aria-label="Olbiatech home"><img src="logo-transparent.png" alt="Olbiatech"/></a>
+    <div class="nav-right">
+      <a class="back" href="/"><span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span><span class="t" data-i18n="back-to-site">Back to site</span></a>
+      <div class="lang">
+        <button id="lang-en" onclick="setPageLang('en')" aria-label="English" title="English">🇬🇧</button>
+        <button id="lang-tr" onclick="setPageLang('tr')" aria-label="Türkçe" title="Türkçe">🇹🇷</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1 data-i18n="page-h1">Privacy Policy</h1>
+  <p class="updated"><span data-i18n="updated-label">Last updated:</span> <span data-i18n="updated-date">30 June 2026</span></p>
+  <p class="note" data-i18n="prevail-note">This policy is published in English and Turkish. In case of any discrepancy, the English version prevails.</p>
+</section>
+
+<main>
+  <div class="card">
+
+    <!-- ============ ENGLISH ============ -->
+    <div data-lang-content="en">
+      <h2>1. Who we are</h2>
+      <p>This Privacy Policy explains how <strong>Olbiatech Limited</strong> (“Olbiatech”, “we”, “us”) collects, uses, and protects personal data. Olbiatech is a company registered in England &amp; Wales, located at 17 Green Lanes, London N16 9BS, United Kingdom. For data-protection matters contact <a href="mailto:contact@olbiatech.com">contact@olbiatech.com</a>.</p>
+      <p>We provide AI-powered customer-communication services — including an AI receptionist (voice), automated replies to Instagram, Facebook Messenger and website messages, appointment booking, and lead capture. For these services we may act as a <strong>data controller</strong> (our own website visitors and clients) and as a <strong>data processor</strong> (the end-customer data we handle on behalf of our business clients).</p>
+
+      <h2>2. Information we collect</h2>
+      <ul>
+        <li><strong>Contact &amp; account details:</strong> name, email, phone, company, role.</li>
+        <li><strong>Communications:</strong> messages you send us or our clients via website forms, our chat widget, email, phone/voice calls, and connected messaging channels (Instagram and Facebook Messenger).</li>
+        <li><strong>AI inputs &amp; outputs:</strong> the content of messages/prompts processed by our systems and the responses generated.</li>
+        <li><strong>End-customer data (on behalf of clients):</strong> when a business client uses our services, we process the personal data of their customers (e.g. names, contact details, enquiries, appointment details) strictly to deliver the service.</li>
+        <li><strong>Technical &amp; usage data:</strong> IP address, device/browser type, pages viewed, and operational logs.</li>
+      </ul>
+
+      <h2>3. How we use information</h2>
+      <ul>
+        <li>To provide and operate the services (answer calls and messages, respond, qualify enquiries, and book appointments).</li>
+        <li>To maintain security, prevent abuse, and troubleshoot.</li>
+        <li>To improve service quality and reliability.</li>
+        <li>To send service or, where permitted, marketing communications (you can opt out at any time).</li>
+        <li>To meet legal and compliance obligations.</li>
+      </ul>
+
+      <h2>4. Platform integrations &amp; third-party data</h2>
+      <span class="pill">Meta — Instagram &amp; Messenger</span>
+      <p>When a business client connects their Facebook Page and/or Instagram professional account, we receive and process messaging content and related metadata in order to provide automated responses and appointment booking on their behalf. We request only the permissions needed for this purpose, and our access to and use of information obtained through Meta’s platforms complies with the <strong>Meta Platform Terms</strong> and applicable Developer Policies. End-users can request deletion of their data at any time (see “Data deletion” below).</p>
+      <h3>Google — Calendar</h3>
+      <p>When a client connects Google Calendar, we access calendar availability and events solely to check availability and create or update appointments. <strong>Olbiatech’s use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.</strong> We do not use Google user data for advertising, and we do not sell it.</p>
+
+      <h2>5. AI processing</h2>
+      <p>Messages handled by our services may be processed by artificial-intelligence models to understand intent and generate responses. AI outputs are designed to assist, not replace, human judgement, and our clients retain oversight of their own communications.</p>
+
+      <h2>6. Service providers (sub-processors)</h2>
+      <p>We share personal data with a limited set of trusted providers strictly to operate the services:</p>
+      <ul>
+        <li><strong>Anthropic</strong>: AI language processing (Claude).</li>
+        <li><strong>OpenAI</strong>: AI language processing.</li>
+        <li><strong>Retell</strong>: AI voice/telephony agent.</li>
+        <li><strong>Twilio</strong>: telephony and SMS.</li>
+        <li><strong>GoHighLevel</strong>: CRM and marketing automation.</li>
+        <li><strong>Supabase</strong>: database &amp; storage.</li>
+        <li><strong>Vercel</strong>: website &amp; application hosting.</li>
+        <li><strong>Hostinger</strong>: server infrastructure for our automation layer.</li>
+        <li><strong>Meta</strong> and <strong>Google</strong>, where the corresponding integration is enabled by a client.</li>
+      </ul>
+      <p>These providers may engage their own sub-processors under appropriate contractual safeguards. <strong>We do not sell personal data.</strong></p>
+
+      <h2>7. International transfers</h2>
+      <p>We are based in the UK and process data under the UK GDPR. Where data is transferred outside the UK/EEA, we rely on appropriate safeguards such as adequacy decisions or standard contractual clauses.</p>
+
+      <h2>8. Data retention</h2>
+      <p>We retain personal data only as long as necessary for the purposes above or as required by law. After an account is terminated, we generally retain associated data for up to 30 days and then delete or anonymise it, unless a longer period is legally required.</p>
+
+      <h2>9. Your rights</h2>
+      <p>Subject to applicable law, you may request access to, correction, deletion, restriction, or portability of your personal data, and you may object to certain processing. To exercise these rights, email <a href="mailto:contact@olbiatech.com">contact@olbiatech.com</a>. You may also lodge a complaint with the UK Information Commissioner’s Office (ICO).</p>
+
+      <h2>10. Data deletion</h2>
+      <p>To request deletion of your personal data — including data associated with Instagram or Facebook Messenger interactions — please see our <a href="/data-deletion">Data Deletion Instructions</a> or email <a href="mailto:contact@olbiatech.com">contact@olbiatech.com</a>. We action verified requests within 30 days.</p>
+
+      <h2>11. Security</h2>
+      <p>We apply appropriate technical and organisational measures to protect personal data, restrict access to those who need it, and store credentials securely.</p>
+
+      <h2>12. Children</h2>
+      <p>Our services are intended for businesses and are not directed at children. We do not knowingly collect data from children.</p>
+
+      <h2>13. Changes</h2>
+      <p>We may update this policy from time to time. Material changes will be reflected by updating the “Last updated” date above.</p>
+
+      <h2>14. Contact</h2>
+      <p>Olbiatech Limited · 17 Green Lanes, London N16 9BS, United Kingdom · <a href="mailto:contact@olbiatech.com">contact@olbiatech.com</a> · +44 (0) 7379 974484</p>
+    </div>
+
+    <!-- ============ TÜRKÇE ============ -->
+    <div data-lang-content="tr" style="display:none;">
+      <h2>1. Biz kimiz</h2>
+      <p>Bu Gizlilik Politikası, <strong>Olbiatech Limited</strong> (“Olbiatech”, “biz”) tarafından kişisel verilerin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar. Olbiatech, İngiltere &amp; Galler’de kayıtlı bir şirkettir; adres: 17 Green Lanes, London N16 9BS, Birleşik Krallık. Veri koruma konuları için: <a href="mailto:contact@olbiatech.com">contact@olbiatech.com</a>.</p>
+      <p>Yapay zeka destekli müşteri iletişim hizmetleri sunuyoruz — AI resepsiyonist (sesli), Instagram, Facebook Messenger ve web sitesi mesajlarına otomatik yanıt, randevu oluşturma ve lead yakalama. Bu hizmetlerde hem <strong>veri sorumlusu</strong> (kendi ziyaretçi ve müşterilerimiz) hem de <strong>veri işleyen</strong> (iş müşterilerimiz adına işlediğimiz son-kullanıcı verileri) olarak hareket edebiliriz.</p>
+
+      <h2>2. Topladığımız bilgiler</h2>
+      <ul>
+        <li><strong>İletişim &amp; hesap bilgileri:</strong> ad, e-posta, telefon, şirket, görev.</li>
+        <li><strong>İletişimler:</strong> web formları, sohbet aracımız, e-posta, telefon/sesli aramalar ve bağlı mesajlaşma kanalları (Instagram ve Facebook Messenger) üzerinden bize veya müşterilerimize gönderdiğiniz mesajlar.</li>
+        <li><strong>AI girdileri &amp; çıktıları:</strong> sistemlerimizce işlenen mesaj/komut içeriği ve üretilen yanıtlar.</li>
+        <li><strong>Son-kullanıcı verileri (müşteriler adına):</strong> bir iş müşterisi hizmetlerimizi kullandığında, onların müşterilerine ait kişisel verileri (ör. ad, iletişim, talep, randevu bilgisi) yalnızca hizmeti sunmak için işleriz.</li>
+        <li><strong>Teknik &amp; kullanım verileri:</strong> IP adresi, cihaz/tarayıcı türü, görüntülenen sayfalar ve operasyon kayıtları.</li>
+      </ul>
+
+      <h2>3. Bilgileri nasıl kullanırız</h2>
+      <ul>
+        <li>Hizmetleri sunmak ve işletmek için (arama ve mesajları yanıtlamak, talepleri değerlendirmek, randevu oluşturmak).</li>
+        <li>Güvenliği sağlamak, kötüye kullanımı önlemek ve sorun gidermek için.</li>
+        <li>Hizmet kalitesini ve güvenilirliğini artırmak için.</li>
+        <li>Hizmet bildirimleri veya izin verildiği ölçüde pazarlama iletileri göndermek için (istediğiniz zaman çıkabilirsiniz).</li>
+        <li>Yasal ve uyumluluk yükümlülüklerini yerine getirmek için.</li>
+      </ul>
+
+      <h2>4. Platform entegrasyonları &amp; üçüncü taraf verisi</h2>
+      <span class="pill">Meta — Instagram &amp; Messenger</span>
+      <p>Bir iş müşterisi Facebook Sayfasını ve/veya Instagram profesyonel hesabını bağladığında, onlar adına otomatik yanıt ve randevu oluşturmak amacıyla mesaj içeriğini ve ilgili meta verileri alır ve işleriz. Yalnızca bu amaç için gereken izinleri talep ederiz; Meta platformları üzerinden elde edilen bilgilere erişimimiz ve kullanımımız <strong>Meta Platform Şartları</strong> ve geçerli Geliştirici Politikalarına uygundur. Son kullanıcılar verilerinin silinmesini istediği zaman talep edebilir (aşağıdaki “Veri silme”).</p>
+      <h3>Google — Takvim</h3>
+      <p>Bir müşteri Google Takvim’i bağladığında, yalnızca uygunluğu kontrol etmek ve randevu oluşturmak/güncellemek için takvim uygunluğuna ve etkinliklerine erişiriz. <strong>Olbiatech’in Google API’lerinden alınan bilgileri kullanımı ve başka bir uygulamaya aktarımı, Limited Use (Sınırlı Kullanım) gereklilikleri dâhil <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>’ye uygundur.</strong> Google kullanıcı verisini reklam için kullanmaz ve satmayız.</p>
+
+      <h2>5. Yapay zeka işleme</h2>
+      <p>Hizmetlerimizde ele alınan mesajlar, niyeti anlamak ve yanıt üretmek için yapay zeka modelleriyle işlenebilir. AI çıktıları insan kararının yerini almak için değil, ona yardımcı olmak için tasarlanır; müşterilerimiz kendi iletişimleri üzerinde denetimi korur.</p>
+
+      <h2>6. Hizmet sağlayıcılar (alt-işleyiciler)</h2>
+      <p>Kişisel verileri yalnızca hizmeti işletmek için sınırlı sayıda güvenilir sağlayıcıyla paylaşırız:</p>
+      <ul>
+        <li><strong>Anthropic</strong>: yapay zeka dil işleme (Claude).</li>
+        <li><strong>OpenAI</strong>: yapay zeka dil işleme.</li>
+        <li><strong>Retell</strong>: AI sesli/telefon ajanı.</li>
+        <li><strong>Twilio</strong>: telefon ve SMS.</li>
+        <li><strong>GoHighLevel</strong>: CRM ve pazarlama otomasyonu.</li>
+        <li><strong>Supabase</strong>: veritabanı &amp; depolama.</li>
+        <li><strong>Vercel</strong>: web sitesi &amp; uygulama barındırma.</li>
+        <li><strong>Hostinger</strong>: otomasyon katmanımız için sunucu altyapısı.</li>
+        <li><strong>Meta</strong> ve <strong>Google</strong>, ilgili entegrasyon bir müşteri tarafından etkinleştirildiğinde.</li>
+      </ul>
+      <p>Bu sağlayıcılar, uygun sözleşmesel güvenceler altında kendi alt-işleyicilerini kullanabilir. <strong>Kişisel veriyi satmayız.</strong></p>
+
+      <h2>7. Uluslararası aktarımlar</h2>
+      <p>Birleşik Krallık merkezliyiz ve verileri UK GDPR kapsamında işleriz. Veriler UK/AEA dışına aktarıldığında, yeterlilik kararları veya standart sözleşme hükümleri gibi uygun güvencelere dayanırız.</p>
+
+      <h2>8. Veri saklama</h2>
+      <p>Kişisel verileri yalnızca yukarıdaki amaçlar için gerekli olduğu sürece veya yasaların gerektirdiği kadar saklarız. Bir hesap sonlandıktan sonra ilgili veriyi genellikle 30 güne kadar tutar, ardından yasal bir gereklilik yoksa siler veya anonimleştiririz.</p>
+
+      <h2>9. Haklarınız</h2>
+      <p>Geçerli yasalara tabi olarak; kişisel verilerinize erişim, düzeltme, silme, kısıtlama veya taşınabilirlik talep edebilir ve belirli işlemelere itiraz edebilirsiniz. Bu hakları kullanmak için <a href="mailto:contact@olbiatech.com">contact@olbiatech.com</a> adresine yazın. Ayrıca BK Bilgi Komiserliği Ofisi’ne (ICO) şikâyette bulunabilirsiniz.</p>
+
+      <h2>10. Veri silme</h2>
+      <p>Kişisel verilerinizin — Instagram veya Facebook Messenger etkileşimlerine ilişkin veriler dâhil — silinmesini talep etmek için <a href="/data-deletion">Veri Silme Talimatları</a> sayfamıza bakın veya <a href="mailto:contact@olbiatech.com">contact@olbiatech.com</a> adresine yazın. Doğrulanan talepleri 30 gün içinde işleme alırız.</p>
+
+      <h2>11. Güvenlik</h2>
+      <p>Kişisel veriyi korumak için uygun teknik ve idari önlemler uygular, erişimi gerekli kişilerle sınırlar ve kimlik bilgilerini güvenli şekilde saklarız.</p>
+
+      <h2>12. Çocuklar</h2>
+      <p>Hizmetlerimiz işletmelere yöneliktir ve çocuklara yönelik değildir. Çocuklardan bilerek veri toplamayız.</p>
+
+      <h2>13. Değişiklikler</h2>
+      <p>Bu politikayı zaman zaman güncelleyebiliriz. Önemli değişiklikler yukarıdaki “Son güncelleme” tarihi güncellenerek yansıtılır.</p>
+
+      <h2>14. İletişim</h2>
+      <p>Olbiatech Limited · 17 Green Lanes, London N16 9BS, Birleşik Krallık · <a href="mailto:contact@olbiatech.com">contact@olbiatech.com</a> · +44 (0) 7379 974484</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="fwrap">
+    <a href="mailto:contact@olbiatech.com"><span class="material-symbols-outlined" style="font-size:18px;">mail</span>contact@olbiatech.com</a>
+    <span class="c"><span class="material-symbols-outlined" style="font-size:18px;">location_on</span>London, UK</span>
+  </div>
+  <div class="bottom">
+    <p>
+      <span data-i18n="footer-copy">© 2026 Olbiatech Limited.</span>
+      <span>
+        <a href="/terms-of-service" data-i18n="footer-terms">Terms &amp; Conditions</a>
+        <span style="color:#334155;margin:0 8px;">|</span>
+        <a href="/privacy-policy" data-i18n="footer-privacy">Privacy Policy</a>
+        <span style="color:#334155;margin:0 8px;">|</span>
+        <a href="/data-deletion" data-i18n="footer-data">Data Deletion</a>
+      </span>
+    </p>
+  </div>
+</footer>
+
+<script>
+  window.translations = {
+    en: {
+      'page-title': 'Privacy Policy | Olbiatech',
+      'page-h1': 'Privacy Policy',
+      'updated-label': 'Last updated:',
+      'updated-date': '30 June 2026',
+      'prevail-note': 'This policy is published in English and Turkish. In case of any discrepancy, the English version prevails.',
+      'back-to-site': 'Back to site',
+      'footer-copy': '© 2026 Olbiatech Limited.',
+      'footer-terms': 'Terms & Conditions',
+      'footer-privacy': 'Privacy Policy',
+      'footer-data': 'Data Deletion'
+    },
+    tr: {
+      'page-title': 'Gizlilik Politikası | Olbiatech',
+      'page-h1': 'Gizlilik Politikası',
+      'updated-label': 'Son güncelleme:',
+      'updated-date': '30 Haziran 2026',
+      'prevail-note': 'Bu politika İngilizce ve Türkçe olarak yayımlanır. Herhangi bir tutarsızlık hâlinde İngilizce sürüm geçerlidir.',
+      'back-to-site': 'Siteye dön',
+      'footer-copy': '© 2026 Olbiatech Limited.',
+      'footer-terms': 'Şartlar & Koşullar',
+      'footer-privacy': 'Gizlilik Politikası',
+      'footer-data': 'Veri Silme'
+    }
+  };
+</script>
+<script src="/assets/i18n.js"></script>
+</body>
+</html>
